@@ -1,0 +1,138 @@
+.login-container {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    max-width: 1440px;
+  }
+  
+  .login-row {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+  }
+  
+  .verticle_divider {
+    border-right: 1px solid rgb(0, 0, 0);
+  }
+  
+  .col-md-6 {
+    width: 50%;
+  }
+  
+  .text-center {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .login-title {
+    font-size: 60px;
+    font-weight: 500;
+    font-family: "Nunito", sans-serif;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .login-label {
+    text-align: start;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+  
+  .login-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 25px;
+    font-size: 17px;
+    border: 1px solid #c8cbce;
+    border-radius: 5px;
+  }
+  
+  .login-input::placeholder {
+    color: #c8cbce;
+    font-size: 14px;
+  }
+  
+  .remember-me {
+    text-align: start;
+  }
+  .remember-me-label {
+    font-size: 15px;
+    margin-left: 10px;
+  }
+  
+  .login-button {
+    margin-top: 25px;
+    width: 100%;
+  }
+  .forgot-password {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    color: #e61919;
+    cursor: pointer;
+  }
+  .back-login{
+    text-align: center;
+    color: #e61919;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+
+  }
+  .login-label-forget{
+    height: 80px;
+    width: 100%
+  }
+  .error-container{
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    max-width: 1440px;
+    text-align: center;
+  }
+  .error-content{
+    padding-top: 40px;
+  }
+  .error-message{
+    padding-top: 20px;
+    height: 120px;
+  }
+  .message-restrict{
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .restrict-message{
+    font-size: 20px; 
+  }
+  .restrict-text{
+    font-size: 20px; 
+  }
+  .home_btn {
+    width: 200px;
+  }
+  .otp-box{
+    height: 55px;
+    width: 50px;
+    font-size: 40px;
+    
+    padding-left: 15px;
+    margin-right: 20px;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .resend-label{
+    font-weight: 400;
+    text-align: center;
+  }
+  .resend{
+    font-style: italic;
+    color: #e61919;
+  }
