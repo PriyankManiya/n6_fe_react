@@ -26,7 +26,6 @@ export default function Forgetpassword() {
         },
         {
           headers: {
-            Authorization: "Bearer " + authToken,
             "Content-Type": "application/json",
           },
         }
