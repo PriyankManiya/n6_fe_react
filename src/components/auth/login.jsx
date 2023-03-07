@@ -56,6 +56,7 @@ const Login = () => {
               <img src={logo_svg} alt="Logo" width={100} height={120} />
             </div>
             <div className="login-title">Welcome Back</div>
+            <div>{base_url}</div>
             <div className="login-label">Username*</div>
             <input
               type="text"

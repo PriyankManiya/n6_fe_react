@@ -15,6 +15,7 @@ import ResetPasswordLink from './components/auth/resetPasswordLink';
 import Dashboard from './components/dashboard/dashboard';
 import Note from './components/note/note';
 import NoteCreate from './components/note/create';
+import UserList from './components/user/userList';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -33,6 +34,7 @@ root.render(
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/note/:id" element={<Note />} />
             <Route path="/note-create" element={<NoteCreate />} />
+            <Route path="/user-list" element={<UserList />} />
           </Routes>
         </Router>
       </React.StrictMode>

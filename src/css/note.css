@@ -12,6 +12,7 @@
   float: left;
   width: 16%;
   margin-top: 2px;
+  cursor: pointer;
 }
 
 .logo {

@@ -4,7 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 const authSlice = createSlice({
   name: "authSlice",
-  initialState: { token: "", base_url: "http://localhost:8000/api" },
+  initialState: { token: "", base_url: "http://172.22.2.99:8000/api" },
   reducers: {
     setToken: (state, action) => {
       state.token = action.payload;
@@ -16,10 +16,14 @@ const userSlice = createSlice({
   name: "userSlice",
   initialState: {
     userData: {},
+    userslist: [],
   },
   reducers: {
     setUserData: (state, action) => {
       state.userData = action.payload;
+    },
+    setUsersListData: (state, action) => {
+      state.userslist = action.payload;
     },
   },
 });

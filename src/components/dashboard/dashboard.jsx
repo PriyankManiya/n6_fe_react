@@ -34,25 +34,27 @@ export default function Dashboard() {
     const setProjectsData = (data) => dispatch(actions.setProjectsData(data));
     const setProjectData = (data) => dispatch(actions.setProjectData(data));
 
-    const resetStore = () => dispatch(actions.reset());
-    const navigateLogin = () => navigate("/");
-    const navigateNotes = (id) => {
-        for (let i = 0; i < projectsListData.length; i++) {
-            if (projectsListData[i].id === id) {
-                setProjectData(projectsListData[i]);
-                break;
-            }
-        }
-        navigate("/note/" + id);
-    };
+  const resetStore = () => dispatch(actions.reset());
+  const navigateHome = () => navigate("/");
+  const navigateUserList = () => navigate("/user-list");
+
+  const navigateNotes = (id) => {
+    for (let i = 0; i < projectsListData.length; i++) {
+      if (projectsListData[i].id === id) {
+        setProjectData(projectsListData[i]);
+        break;
+      }
+    }
+    navigate("/note/" + id);
+  };
 
     const refreshPage = () => window.location.reload(false);
 
-    const logoutUser = () => {
-        setToken("");
-        resetStore();
-        navigateLogin();
-    };
+  const logoutUser = () => {
+    setToken("");
+    resetStore();
+    navigateHome();
+  };
 
     const getUserInfo = () => {
         try {
