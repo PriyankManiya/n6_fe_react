@@ -35,7 +35,9 @@ export default function Dashboard() {
   const setProjectData = (data) => dispatch(actions.setProjectData(data));
 
   const resetStore = () => dispatch(actions.reset());
-  const navigateLogin = () => navigate("/");
+  const navigateHome = () => navigate("/");
+  const navigateUserList = () => navigate("/user-list");
+
   const navigateNotes = (id) => {
     for (let i = 0; i < projectsListData.length; i++) {
       if (projectsListData[i].id === id) {
@@ -51,7 +53,7 @@ export default function Dashboard() {
   const logoutUser = () => {
     setToken("");
     resetStore();
-    navigateLogin();
+    navigateHome();
   };
 
   const getUserInfo = () => {
@@ -152,7 +154,7 @@ export default function Dashboard() {
     <>
       {modalOpen && <Model setOpenModal={setModalOpen} />}
       <div className="top-bar">
-        <div className="logo-box">
+        <div className="logo-box" onClick={navigateHome}>
           <div className="logo">
             <img
               src={logo_svg}
@@ -188,7 +190,7 @@ export default function Dashboard() {
           <></>
         ) : (
           <div className="create-options-box">
-            <div className="manage-users-button">
+            <div className="manage-users-button" onClick={navigateUserList}>
               <img src={userIcon} alt="User Icon" width={25} height={25} />
               <p>Manage Users</p>
             </div>

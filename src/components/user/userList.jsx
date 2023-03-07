@@ -28,13 +28,13 @@ export default function UserList() {
   const setUsersListData = (data) => dispatch(actions.setUsersListData(data));
 
   const resetStore = () => dispatch(actions.reset());
-  const navigateLogin = () => navigate("/");
+  const navigateHome = () => navigate("/");
   const navigateDashboard = () => navigate("/dashboard");
 
   const logoutUser = () => {
     setToken("");
     resetStore();
-    navigateLogin();
+    navigateHome();
   };
 
   useEffect(() => {
@@ -119,9 +119,10 @@ export default function UserList() {
   return (
     <>
       <div className="top-bar">
-        <div className="logo-box">
+        <div className="logo-box" >
           <div className="logo">
             <img
+            onClick={navigateHome}
               src={logo_svg}
               alt="N6 Logo"
               title="N6 Logo"

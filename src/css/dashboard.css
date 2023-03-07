@@ -16,8 +16,14 @@
 
 .logo {
   text-align: center;
+  
 }
-
+.logo > img {
+  cursor: pointer;
+}
+.logo > img {
+  cursor: pointer;
+}
 .user-name-box {
   float: left;
   width: 9%;
@@ -100,6 +106,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .manage-users-button p {
