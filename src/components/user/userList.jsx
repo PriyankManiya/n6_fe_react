@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import "../../css/userList.css";
 
 import axios from "axios";
 import { actions } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
-
-import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
+import { useNavigate } from "react-router-dom";
 
 import { notify, ToastType } from "../utils";
 
@@ -19,7 +17,6 @@ import addItemIcon from "../../assets/svg/Common/addItemIcon.svg";
 export default function UserList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   const baseUrl = useSelector((state) => state.auth.base_url);
   const authToken = useSelector((state) => state.auth.token);

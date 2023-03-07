@@ -31,7 +31,6 @@ export default function ResetPasswordLink() {
         },
         {
           headers: {
-            Authorization: "Bearer " + authToken,
             "Content-Type": "application/json",
           },
         }
