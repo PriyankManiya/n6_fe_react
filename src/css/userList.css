@@ -12,11 +12,15 @@
     float: left;
     width: 16%;
     margin-top: 2px;
+    
 }
 
 .logo {
     text-align: center;
 }
+.logo > img {
+    cursor: pointer;
+  }
 
 .user-name-box {
     float: left;
