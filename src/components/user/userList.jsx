@@ -154,19 +154,7 @@ export default function UserList() {
           <p onClick={navigateDashboard}>Dashboard</p>
         </div>
         <div className="create-options-box">
-          <div className="manage-users-button">
-            <img src={userIcon} alt="User Icon" width={25} height={25} />
-            <p>Manage Users</p>
-          </div>
-          <div className="add-project-button">
-            <img
-              src={addItemIcon}
-              alt="Add Project Icon"
-              width={25}
-              height={30}
-            />
-            <p>Add Project</p>
-          </div>
+          
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../../css/dashboard.css";
+import "./dashboard.css";
 
 import axios from "axios";
 import { actions } from "../../store";
@@ -10,7 +10,7 @@ import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 
 import { notify, ToastType } from "../utils";
 
-import n6Logo from "../../assets/svg/Common/logo.svg";
+import n6Logo from "../../assets/svg/Common/Logo.svg";
 import userIcon from "../../assets/svg/Common/userIcon.svg";
 import logoutIcon from "../../assets/svg/Common/logoutIcon.svg";
 import addItemIcon from "../../assets/svg/Common/addItemIcon.svg";
@@ -20,7 +20,9 @@ export default function Dashboard() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
+
     const [modalOpen, setModalOpen] = useState(false);
+
     const [selectedNoteId, setselectedNoteId] = useState(0);
     const [selectedNoteStatus, setselectedNoteStatus] = useState(true);
 
@@ -34,27 +36,27 @@ export default function Dashboard() {
     const setProjectsData = (data) => dispatch(actions.setProjectsData(data));
     const setProjectData = (data) => dispatch(actions.setProjectData(data));
 
-  const resetStore = () => dispatch(actions.reset());
-  const navigateHome = () => navigate("/");
-  const navigateUserList = () => navigate("/user-list");
+    const resetStore = () => dispatch(actions.reset());
+    const navigateHome = () => navigate("/");
+    const navigateUserList = () => navigate("/user-list");
 
-  const navigateNotes = (id) => {
-    for (let i = 0; i < projectsListData.length; i++) {
-      if (projectsListData[i].id === id) {
-        setProjectData(projectsListData[i]);
-        break;
-      }
-    }
-    navigate("/note/" + id);
-  };
+    const navigateNotes = (id) => {
+        for (let i = 0; i < projectsListData.length; i++) {
+            if (projectsListData[i].id === id) {
+                setProjectData(projectsListData[i]);
+                break;
+            }
+        }
+        navigate("/note/" + id);
+    };
 
     const refreshPage = () => window.location.reload(false);
 
-  const logoutUser = () => {
-    setToken("");
-    resetStore();
-    navigateHome();
-  };
+    const logoutUser = () => {
+        setToken("");
+        resetStore();
+        navigateHome();
+    };
 
     const getUserInfo = () => {
         try {
@@ -150,9 +152,58 @@ export default function Dashboard() {
         );
     }
 
+    /* TESTING */
+
+    const [showAddProjectForm, setShowAddProjectFrom] = useState(false);
+
+    function AddProjectForm({ showAddProjectForm }) {
+        return (
+            <>
+                <div className="add-project-form-background">
+                    <div className="add-project-form-box">
+                        <div>
+                            <p>Create Project</p>
+                        </div>
+                        <div>
+                            <form>
+                                <div>
+                                    <p>Select Company for the Project</p>
+                                </div>
+                                <div>
+                                    <label for="company-list">Company Name<sup>*</sup></label>
+                                    <select id="company-list" name="company-list">
+                                        <option></option>
+                                        <option>Zendus Technology</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <p>-----OR-----</p>
+                                    <p>Add new Company</p>
+                                </div>
+                                <div>
+                                    <label for="new-company-name">Company Name<sup>*</sup></label>
+                                    <input type="text" id="new-company-name" name="new-company-name" />
+                                </div>
+                                <div>
+                                    <label for="new-company-email">Email<sup>*</sup></label>
+                                    <input type="text" id="new-company-email" name="new-company-email" />
+                                </div>
+                                <div>
+                                    <label for="new-company-mobile-number">Mobile Number</label>
+                                    <input type="text" id="new-company-mobile-number" name="new-company-mobile-number" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
+    }
+
     return (
         <>
             {modalOpen && <Model setOpenModal={setModalOpen} />}
+            {showAddProjectForm && <AddProjectForm isOpen={setShowAddProjectFrom} />}
             <div className="general-top-bar">
                 <div className="general-top-bar-info-box">
                     <div className="general-top-bar-logo-box">
@@ -179,15 +230,36 @@ export default function Dashboard() {
 
             <div className="general-bread-and-btn-bar">
                 <div className="breadcrumbs-box">
-                    <p>N6 &#62;</p> <p> &#62; Dashboard</p>
+                    <p>N6 &#62;</p>&nbsp;<p>Dashboard</p>
                 </div>
+
+                <div className="btn-box">
+                    <div className="manage-user-button" onClick={() => { setShowAddProjectFrom(true); }}>
+                        <div>
+                            <img src={userIcon} />
+                        </div>
+                        <div>
+                            <p>Manage Users</p>
+                        </div>
+                    </div>
+                    <div className="add-project-button">
+                        <div>
+                            <img src={projectIcon} alt="Project Icon" />
+                        </div>
+                        <div>
+                            <p>Add Project</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* COMMENTED FOR TESTING
                 {userData.user_level_id !== 1 ? (
                     <></>
                 ) : (
                     <div className="btn-box">
                         <div className="manage-user-button">
                             <div>
-                                <img src={userIcon} />
+                                <img src={userIcon} alt="User Icon"/>
                             </div>
                             <div>
                                 <p>Manage Users</p>
@@ -203,6 +275,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                 )}
+                */}
             </div>
 
             <div className="project-list-box">
