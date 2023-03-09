@@ -112,21 +112,6 @@
         color: white;
     }
 
-.add-project-button {
-    margin-left: 0;
-    border-radius: 20px;
-    background-color: #1E3A8A;
-    height: 40px;
-    width: 170px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-    .add-project-button p {
-        margin-left: 10px;
-        color: white;
-    }
 
 
 .user-list-box {
