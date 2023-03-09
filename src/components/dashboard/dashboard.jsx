@@ -10,7 +10,7 @@ import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 
 import { notify, ToastType } from "../utils";
 
-import n6Logo from "../../assets/svg/Common/logo.svg";
+import n6Logo from "../../assets/svg/Common/Logo.svg";
 import userIcon from "../../assets/svg/Common/userIcon.svg";
 import logoutIcon from "../../assets/svg/Common/logoutIcon.svg";
 import addItemIcon from "../../assets/svg/Common/addItemIcon.svg";
