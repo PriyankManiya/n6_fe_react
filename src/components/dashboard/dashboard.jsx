@@ -44,6 +44,7 @@ export default function Dashboard() {
     const setUserData = (data) => dispatch(actions.setUserData(data));
     const setProjectsData = (data) => dispatch(actions.setProjectsData(data));
     const setProjectData = (data) => dispatch(actions.setProjectData(data));
+    const setComapniesData = (data) => dispatch(actions.setComapniesData(data));
 
     const resetStore = () => dispatch(actions.reset());
     const navigateHome = () => navigate("/");
@@ -120,9 +121,37 @@ export default function Dashboard() {
         // }
     };
 
+    const getCompanyList = () => {
+        try {
+          // Get Companies List data
+          axios
+            .get(`${baseUrl}/company/list/`, {
+              headers: {
+                Authorization: "Bearer " + authToken,
+                "Content-Type": "application/json",
+              },
+            })
+            .then((res) => {
+              let data = res.data;
+              if (data.status === 200) {
+                setComapniesData(data.data);
+              } else {
+                notify(
+                  ToastType.ERROR,
+                  "Something went wrong. Please try again later."
+                );
+              }
+            });
+        } catch (error) {
+          console.log("error >>>> ", error);
+          notify(ToastType.ERROR, "Something went wrong. Please try again later.");
+        }
+      };
+
     useEffect(() => {
         getUserInfo();
         getProjects();
+        getCompanyList();
     }, []);
 
     function Model({ setOpenModal }) {
@@ -209,7 +238,7 @@ export default function Dashboard() {
                                 <p>Manage Users</p>
                             </div>
                         </div>
-                        <div className="add-project-button">
+                        <div className="add-project-button" onClick={() => setShowAddProjectFrom(true)}>
                             <div>
                                 <img src={projectIcon} alt="Project Icon" />
                             </div>

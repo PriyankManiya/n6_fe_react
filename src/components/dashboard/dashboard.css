@@ -341,6 +341,11 @@
     align-items: flex-start;
     justify-content: center;
     margin-bottom: 30px;
+    width: 100%;
+
+}
+.dropdown-root{
+    width: 100%;
 }
 
     .add-company-form-select > label:first-child {
