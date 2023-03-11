@@ -19,6 +19,8 @@ import projectIcon from "../../assets/svg/Common/projectIcon.svg";
 /* Modals - Kishan J */
 import AddProjectForm from "./addProjectFormModal";
 import AddProjectFormNext from "./addProjectFormNextModal";
+import UpdateProjectFormNext from "./updateProjectFormModal";
+import UpdateProjectForm from "./updateProjectFormModal";
 
 export default function Dashboard() {
     const dispatch = useDispatch();
@@ -30,7 +32,7 @@ export default function Dashboard() {
     /* Modals - Kishan J */
     const [showAddProjectForm, setShowAddProjectFrom] = useState(false);
     const [showAddProjectFormNext, setShowAddProjectFromNext] = useState(false);
-
+    const [showUpdateProjectForm, setShowUpdateProjectFrom] = useState(false);
 
     const [selectedNoteId, setselectedNoteId] = useState(0);
     const [selectedNoteStatus, setselectedNoteStatus] = useState(true);
@@ -123,30 +125,30 @@ export default function Dashboard() {
 
     const getCompanyList = () => {
         try {
-          // Get Companies List data
-          axios
-            .get(`${baseUrl}/company/list/`, {
-              headers: {
-                Authorization: "Bearer " + authToken,
-                "Content-Type": "application/json",
-              },
-            })
-            .then((res) => {
-              let data = res.data;
-              if (data.status === 200) {
-                setComapniesData(data.data);
-              } else {
-                notify(
-                  ToastType.ERROR,
-                  "Something went wrong. Please try again later."
-                );
-              }
-            });
+            // Get Companies List data
+            axios
+                .get(`${baseUrl}/company/list/`, {
+                    headers: {
+                        Authorization: "Bearer " + authToken,
+                        "Content-Type": "application/json",
+                    },
+                })
+                .then((res) => {
+                    let data = res.data;
+                    if (data.status === 200) {
+                        setComapniesData(data.data);
+                    } else {
+                        notify(
+                            ToastType.ERROR,
+                            "Something went wrong. Please try again later."
+                        );
+                    }
+                });
         } catch (error) {
-          console.log("error >>>> ", error);
-          notify(ToastType.ERROR, "Something went wrong. Please try again later.");
+            console.log("error >>>> ", error);
+            notify(ToastType.ERROR, "Something went wrong. Please try again later.");
         }
-      };
+    };
 
     useEffect(() => {
         getUserInfo();
@@ -190,13 +192,14 @@ export default function Dashboard() {
         );
     }
 
-    
+
 
     return (
         <>
             {modalOpen && <Model setOpenModal={setModalOpen} />}
             {showAddProjectForm && <AddProjectForm setShowAddProjectFrom={setShowAddProjectFrom} setShowAddProjectFromNext={setShowAddProjectFromNext} />}
             {showAddProjectFormNext && <AddProjectFormNext setShowAddProjectFromNext={setShowAddProjectFromNext} />}
+            {showUpdateProjectForm && <UpdateProjectForm setShowUpdateProjectFrom={setShowUpdateProjectFrom} />}
             <div className="general-top-bar">
                 <div className="general-top-bar-info-box">
                     <div className="general-top-bar-logo-box">
@@ -232,7 +235,7 @@ export default function Dashboard() {
                     <div className="btn-box">
                         <div className="manage-user-button">
                             <div>
-                                <img src={userIcon} alt="User Icon"/>
+                                <img src={userIcon} alt="User Icon" />
                             </div>
                             <div>
                                 <p>Manage Users</p>
@@ -280,7 +283,7 @@ export default function Dashboard() {
                                         </div>
                                     </div>
 
-                                    <div className="project-options" onClick={() => { }}>
+                                    <div className="project-options">
                                         <div>
                                             {userData.user_level_id === 1 ? (
                                                 <Menu
@@ -313,7 +316,7 @@ export default function Dashboard() {
                                                             : "Enable Project"}
                                                     </MenuItem>
                                                     <MenuItem>Manage Access</MenuItem>
-                                                    <MenuItem>Update Details</MenuItem>
+                                                    <MenuItem onClick={() => setShowUpdateProjectFrom(true)}>Update Details</MenuItem>
                                                 </Menu>
                                             ) : (
                                                 <></>
