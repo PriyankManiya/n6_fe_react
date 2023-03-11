@@ -16,12 +16,21 @@ import logoutIcon from "../../assets/svg/Common/logoutIcon.svg";
 import addItemIcon from "../../assets/svg/Common/addItemIcon.svg";
 import projectIcon from "../../assets/svg/Common/projectIcon.svg";
 
+/* Modals - Kishan J */
+import AddProjectForm from "./addProjectFormModal";
+import AddProjectFormNext from "./addProjectFormNextModal";
+
 export default function Dashboard() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
 
     const [modalOpen, setModalOpen] = useState(false);
+
+    /* Modals - Kishan J */
+    const [showAddProjectForm, setShowAddProjectFrom] = useState(false);
+    const [showAddProjectFormNext, setShowAddProjectFromNext] = useState(false);
+
 
     const [selectedNoteId, setselectedNoteId] = useState(0);
     const [selectedNoteStatus, setselectedNoteStatus] = useState(true);
@@ -152,105 +161,13 @@ export default function Dashboard() {
         );
     }
 
-    /* TESTING */
-
-    const [showAddProjectForm, setShowAddProjectFrom] = useState(false);
-    const [showAddProjectFormNext, setShowAddProjectFromNext] = useState(false);
-
-    function AddProjectForm({ showAddProjectForm }) {
-        return (
-            <>
-                <div className="add-project-form-background">
-                    <div className="add-project-form-box">
-                        <div className="add-project-form-title">
-                            <p>Create Project</p>
-                        </div>
-                        <div className="add-company-form-box">
-                            <form className="add-company-form">
-                                <div className="add-company-form-select-title">
-                                    <p>Select Company for the Project</p>
-                                </div>
-                                <div className="add-company-form-select">
-                                    <label for="company-list">Company Name<sup>*</sup></label>
-                                    <select id="company-list" name="company-list">
-                                        <option></option>
-                                        <option>Zendus Technology</option>
-                                    </select>
-                                </div>
-                                <div className="add-company-form-new-title">
-                                    <p>-----OR-----</p>
-                                    <p>Add new Company</p>
-                                </div>
-                                <div className="add-company-form-new-name">
-                                    <label for="new-company-name">Company Name<sup>*</sup></label>
-                                    <input type="text" id="new-company-name" name="new-company-name" />
-                                </div>
-                                <div className="add-company-form-new-email">
-                                    <label for="new-company-email">Email<sup>*</sup></label>
-                                    <input type="text" id="new-company-email" name="new-company-email" />
-                                </div>
-                                <div className="add-company-form-new-mobile">
-                                    <label for="new-company-mobile-number">Mobile Number</label>
-                                    <input type="text" id="new-company-mobile-number" name="new-company-mobile-number" />
-                                </div>
-                            </form>
-                            <div className="add-company-form-box-buttons">
-                                <div onClick={() => { setShowAddProjectFromNext(true); setShowAddProjectFrom(false); }}>
-                                    <p>Next</p>
-                                </div>
-                                <div onClick={() => { setShowAddProjectFrom(false); }}>
-                                    <p>Cancel</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </>
-        );
-    }
-
-    function AddProjectFormNext({ showAddProjectFormNext }) {
-        return (
-            <>
-                <div className="add-project-form-background">
-                    <div className="add-project-form-box">
-                        <div className="add-project-form-title">
-                            <p>Create Project</p>
-                        </div>
-                        <div className="add-project-form-container">
-                            <form className="add-project-form">
-                                <div className="add-project-form-new-title">
-                                    <p>Please enter the information for the project below</p>
-                                </div>
-                                <div className="add-project-form-name">
-                                    <label for="new-project-name">Project Name<sup>*</sup></label>
-                                    <input type="text" id="new-project-name" name="new-project-name" />
-                                </div>
-                                <div className="add-project-form-description">
-                                    <label for="new-project-description">Description</label>
-                                    <textarea id="new-project-description" name="new-project-description"/>
-                                </div>
-                            </form>
-                            <div className="add-project-form-box-buttons">
-                                <div >
-                                    <p>Create</p>
-                                </div>
-                                <div onClick={() => { setShowAddProjectFromNext(false); }}>
-                                    <p>Cancel</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </>
-        );
-    }
+    
 
     return (
         <>
             {modalOpen && <Model setOpenModal={setModalOpen} />}
-            {showAddProjectForm && <AddProjectForm isOpen={setShowAddProjectFrom} />}
-            {showAddProjectFormNext && <AddProjectFormNext isOpen={setShowAddProjectFromNext} />}
+            {showAddProjectForm && <AddProjectForm setShowAddProjectFrom={setShowAddProjectFrom} setShowAddProjectFromNext={setShowAddProjectFromNext} />}
+            {showAddProjectFormNext && <AddProjectFormNext setShowAddProjectFromNext={setShowAddProjectFromNext} />}
             <div className="general-top-bar">
                 <div className="general-top-bar-info-box">
                     <div className="general-top-bar-logo-box">
@@ -280,26 +197,6 @@ export default function Dashboard() {
                     <p>N6 &#62;</p>&nbsp;<p>Dashboard</p>
                 </div>
 
-                <div className="btn-box">
-                    <div className="manage-user-button" onClick={() => { setShowAddProjectFrom(true); }}>
-                        <div>
-                            <img src={userIcon} />
-                        </div>
-                        <div>
-                            <p>Manage Users</p>
-                        </div>
-                    </div>
-                    <div className="add-project-button">
-                        <div>
-                            <img src={projectIcon} alt="Project Icon" />
-                        </div>
-                        <div>
-                            <p>Add Project</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* COMMENTED FOR TESTING
                 {userData.user_level_id !== 1 ? (
                     <></>
                 ) : (
@@ -322,7 +219,6 @@ export default function Dashboard() {
                         </div>
                     </div>
                 )}
-                */}
             </div>
 
             <div className="project-list-box">
