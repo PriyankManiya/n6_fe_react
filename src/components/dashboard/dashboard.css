@@ -281,7 +281,7 @@
     height: 100%;
     position: fixed;
     backdrop-filter: blur(1.5px);
-    background-color: rgb(128,128,128, 0.3);
+    background-color: rgb(128,128,128, 0.2);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -295,146 +295,293 @@
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
-    margin-top: 150px;
+    margin-top: 120px;
 }
 
-    .add-project-form-box > div:first-child {
-        width: 100%;
-        border-bottom: 1px solid black;
+.add-project-form-title {
+    width: 100%;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+    .add-project-form-title > p {
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+.add-company-form-box {
+    padding: 25px 50px 25px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-company-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-company-form-select-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.add-company-form-select {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+    .add-company-form-select > label:first-child {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .add-company-form-select > select {
+        width: 350px;
+        height: 35px;
+        font-size: 16px;
+        padding-left: 4px;
+        border: 1.5px solid #1E3A8A;
+        border-radius: 5px;
+    }
+
+        .add-company-form-select > select > option {
+            font-size: 16px;
+        }
+
+.add-company-form-new-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+    .add-company-form-new-title > p:first-child {
+        color: #979797;
+        margin-bottom: 30px;
+    }
+
+.add-company-form-new-name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+    .add-company-form-new-name > label:first-child {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .add-company-form-new-name > input {
+        width: 350px;
+        height: 35px;
+        font-size: 16px;
+        padding-left: 10px;
+        border: 1.5px solid #1E3A8A;
+        border-radius: 5px;
+    }
+
+.add-company-form-new-email {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+    .add-company-form-new-email > label:first-child {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .add-company-form-new-email > input {
+        width: 350px;
+        height: 35px;
+        font-size: 16px;
+        padding-left: 10px;
+        border: 1.5px solid #1E3A8A;
+        border-radius: 5px;
+    }
+
+.add-company-form-new-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+    .add-company-form-new-mobile > label:first-child {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .add-company-form-new-mobile > input {
+        width: 350px;
+        height: 35px;
+        font-size: 16px;
+        padding-left: 10px;
+        border: 1.5px solid #1E3A8A;
+        border-radius: 5px;
+    }
+
+.add-company-form-box-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+    margin-top: 20px;
+}
+
+    .add-company-form-box-buttons > div:first-child {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 5px;
+        width: 80px;
+        padding: 6px 15px 6px 15px;
+        background-color: #1E3A8A;
+        border-radius: 15px;
     }
 
-        .add-project-form-box > div:first-child > p {
-            font-size: 22px;
-            font-weight: 500;
+        .add-company-form-box-buttons > div:first-child > p {
+            color: white;
+            font-size: 16px;
         }
 
-    .add-project-form-box > div:nth-child(2) {
-        padding: 25px 50px 25px 50px;
+    .add-company-form-box-buttons > div:nth-child(2) {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 80px;
+        padding: 6px 15px 6px 15px;
+        background-color: #B11B1B;
+        border-radius: 15px;
     }
 
-        .add-project-form-box > div:nth-child(2) > form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .add-company-form-box-buttons > div:nth-child(2) > p {
+            color: white;
+            font-size: 16px;
         }
 
-            .add-project-form-box > div:nth-child(2) > form > div:first-child {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                margin-bottom: 15px;
-            }
+.add-project-form-container {
+    padding: 25px 50px 25px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-            .add-project-form-box > div:nth-child(2) > form > div:nth-child(2) {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
-                margin-bottom: 30px;
-            }
+.add-project-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-                .add-project-form-box > div:nth-child(2) > form > div:nth-child(2) > label:first-child {
-                    font-weight: 600;
-                    margin-bottom: 10px;
-                }
+.add-project-form-new-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
 
-                .add-project-form-box > div:nth-child(2) > form > div:nth-child(2) > select {
-                    width: 350px;
-                    height: 35px;
-                    font-size: 16px;
-                    padding-left: 4px;
-                    border: 1.5px solid #1E3A8A;
-                    border-radius: 5px;
-                }
+.add-project-form-name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 20px;
+}
 
-                    .add-project-form-box > div:nth-child(2) > form > div:nth-child(2) > select > option {
-                        font-size: 16px;
-                    }
+    .add-project-form-name > label:first-child {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
 
-            .add-project-form-box > div:nth-child(2) > form > div:nth-child(3) {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 15px;
-            }
+    .add-project-form-name > input {
+        width: 375px;
+        height: 35px;
+        font-size: 16px;
+        padding-left: 10px;
+        border: 1.5px solid #1E3A8A;
+        border-radius: 5px;
+    }
 
-                .add-project-form-box > div:nth-child(2) > form > div:nth-child(3) > p:first-child {
-                    color: #979797;
-                    margin-bottom: 30px;
-                }
+.add-project-form-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 20px;
+}
 
-            .add-project-form-box > div:nth-child(2) > form > div:nth-child(4) {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
-                margin-bottom: 20px;
-            }
+    .add-project-form-description > label:first-child {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
 
-                .add-project-form-box > div:nth-child(2) > form > div:nth-child(4) > label:first-child {
-                    font-weight: 600;
-                    margin-bottom: 10px;
-                }
+    .add-project-form-description > textarea {
+        resize: none;
+        width: 375px;
+        height: 260px;
+        font-size: 16px;
+        padding-left: 10px;
+        padding-top: 10px;
+        border: 1.5px solid #1E3A8A;
+        border-radius: 5px;
+    }
 
-                .add-project-form-box > div:nth-child(2) > form > div:nth-child(4) > input {
-                    width: 350px;
-                    height: 35px;
-                    font-size: 16px;
-                    padding-left: 10px;
-                    border: 1.5px solid #1E3A8A;
-                    border-radius: 5px;
-                }
+.add-project-form-box-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+    margin-top: 20px;
+}
 
-            .add-project-form-box > div:nth-child(2) > form > div:nth-child(5) {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
-                margin-bottom: 20px;
-            }
+    .add-project-form-box-buttons > div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        padding: 6px 15px 6px 15px;
+        background-color: #1E3A8A;
+        border-radius: 15px;
+    }
 
-                .add-project-form-box > div:nth-child(2) > form > div:nth-child(5) > label:first-child {
-                    font-weight: 600;
-                    margin-bottom: 10px;
-                }
+        .add-project-form-box-buttons > div:first-child > p {
+            color: white;
+            font-size: 16px;
+        }
 
-                .add-project-form-box > div:nth-child(2) > form > div:nth-child(5) > input {
-                    width: 350px;
-                    height: 35px;
-                    font-size: 16px;
-                    padding-left: 10px;
-                    border: 1.5px solid #1E3A8A;
-                    border-radius: 5px;
-                }
+    .add-project-form-box-buttons > div:nth-child(2) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        padding: 6px 15px 6px 15px;
+        background-color: #B11B1B;
+        border-radius: 15px;
+    }
 
-            .add-project-form-box > div:nth-child(2) > form > div:nth-child(6) {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
-                margin-bottom: 20px;
-            }
-
-                .add-project-form-box > div:nth-child(2) > form > div:nth-child(6) > label:first-child {
-                    font-weight: 600;
-                    margin-bottom: 10px;
-                }
-
-                .add-project-form-box > div:nth-child(2) > form > div:nth-child(6) > input {
-                    width: 350px;
-                    height: 35px;
-                    font-size: 16px;
-                    padding-left: 10px;
-                    border: 1.5px solid #1E3A8A;
-                    border-radius: 5px;
-                }
+        .add-project-form-box-buttons > div:nth-child(2) > p {
+            color: white;
+            font-size: 16px;
+        }

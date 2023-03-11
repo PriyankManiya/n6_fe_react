@@ -155,44 +155,90 @@ export default function Dashboard() {
     /* TESTING */
 
     const [showAddProjectForm, setShowAddProjectFrom] = useState(false);
+    const [showAddProjectFormNext, setShowAddProjectFromNext] = useState(false);
 
     function AddProjectForm({ showAddProjectForm }) {
         return (
             <>
                 <div className="add-project-form-background">
                     <div className="add-project-form-box">
-                        <div>
+                        <div className="add-project-form-title">
                             <p>Create Project</p>
                         </div>
-                        <div>
-                            <form>
-                                <div>
+                        <div className="add-company-form-box">
+                            <form className="add-company-form">
+                                <div className="add-company-form-select-title">
                                     <p>Select Company for the Project</p>
                                 </div>
-                                <div>
+                                <div className="add-company-form-select">
                                     <label for="company-list">Company Name<sup>*</sup></label>
                                     <select id="company-list" name="company-list">
                                         <option></option>
                                         <option>Zendus Technology</option>
                                     </select>
                                 </div>
-                                <div>
+                                <div className="add-company-form-new-title">
                                     <p>-----OR-----</p>
                                     <p>Add new Company</p>
                                 </div>
-                                <div>
+                                <div className="add-company-form-new-name">
                                     <label for="new-company-name">Company Name<sup>*</sup></label>
                                     <input type="text" id="new-company-name" name="new-company-name" />
                                 </div>
-                                <div>
+                                <div className="add-company-form-new-email">
                                     <label for="new-company-email">Email<sup>*</sup></label>
                                     <input type="text" id="new-company-email" name="new-company-email" />
                                 </div>
-                                <div>
+                                <div className="add-company-form-new-mobile">
                                     <label for="new-company-mobile-number">Mobile Number</label>
                                     <input type="text" id="new-company-mobile-number" name="new-company-mobile-number" />
                                 </div>
                             </form>
+                            <div className="add-company-form-box-buttons">
+                                <div onClick={() => { setShowAddProjectFromNext(true); setShowAddProjectFrom(false); }}>
+                                    <p>Next</p>
+                                </div>
+                                <div onClick={() => { setShowAddProjectFrom(false); }}>
+                                    <p>Cancel</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
+    }
+
+    function AddProjectFormNext({ showAddProjectFormNext }) {
+        return (
+            <>
+                <div className="add-project-form-background">
+                    <div className="add-project-form-box">
+                        <div className="add-project-form-title">
+                            <p>Create Project</p>
+                        </div>
+                        <div className="add-project-form-container">
+                            <form className="add-project-form">
+                                <div className="add-project-form-new-title">
+                                    <p>Please enter the information for the project below</p>
+                                </div>
+                                <div className="add-project-form-name">
+                                    <label for="new-project-name">Project Name<sup>*</sup></label>
+                                    <input type="text" id="new-project-name" name="new-project-name" />
+                                </div>
+                                <div className="add-project-form-description">
+                                    <label for="new-project-description">Description</label>
+                                    <textarea id="new-project-description" name="new-project-description"/>
+                                </div>
+                            </form>
+                            <div className="add-project-form-box-buttons">
+                                <div >
+                                    <p>Create</p>
+                                </div>
+                                <div onClick={() => { setShowAddProjectFromNext(false); }}>
+                                    <p>Cancel</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -204,6 +250,7 @@ export default function Dashboard() {
         <>
             {modalOpen && <Model setOpenModal={setModalOpen} />}
             {showAddProjectForm && <AddProjectForm isOpen={setShowAddProjectFrom} />}
+            {showAddProjectFormNext && <AddProjectFormNext isOpen={setShowAddProjectFromNext} />}
             <div className="general-top-bar">
                 <div className="general-top-bar-info-box">
                     <div className="general-top-bar-logo-box">
