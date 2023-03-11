@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "../../css/userList.css";
 
@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { notify, ToastType } from "../utils";
+import CreateCompanyModel from "./createCompanyModel";
+import CreateUserModel from "./createUserModel";
 
 import logo_svg from "../../assets/svg/Common/Logo.svg";
 import userIcon from "../../assets/svg/Common/userIcon.svg";
@@ -17,6 +19,10 @@ import addItemIcon from "../../assets/svg/Common/addItemIcon.svg";
 export default function UserList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [selectedNoteStatus, setselectedNoteStatus] = useState(true);
+  const [companModalOpen, setCompanyModalOpen] = useState(false);
+  const [userModalOpen, setUserModalOpen] = useState(false);
 
   const baseUrl = useSelector((state) => state.auth.base_url);
   const authToken = useSelector((state) => state.auth.token);
@@ -118,11 +124,16 @@ export default function UserList() {
 
   return (
     <>
+      {userModalOpen && <CreateUserModel setOpenModal={setUserModalOpen} getUserList={getUserList}/>}
+      {companModalOpen && (
+        <CreateCompanyModel setOpenModal={setCompanyModalOpen} setUserModalOpen={setUserModalOpen} />
+      )}
+
       <div className="top-bar">
-        <div className="logo-box" >
+        <div className="logo-box">
           <div className="logo">
             <img
-            onClick={navigateHome}
+              onClick={navigateHome}
               src={logo_svg}
               alt="N6 Logo"
               title="N6 Logo"
@@ -154,7 +165,22 @@ export default function UserList() {
           <p onClick={navigateDashboard}>Dashboard</p>
         </div>
         <div className="create-options-box">
-          
+          <div
+            className="manage-users-button"
+            onClick={() => setCompanyModalOpen(true)}
+          >
+            <img src={userIcon} alt="User Icon" width={25} height={25} />
+            <p>Manage Users</p>
+          </div>
+          <div className="add-project-button">
+            <img
+              src={addItemIcon}
+              alt="Add Project Icon"
+              width={25}
+              height={30}
+            />
+            <p>Add Project</p>
+          </div>
         </div>
       </div>
 

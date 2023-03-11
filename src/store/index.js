@@ -4,7 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 const authSlice = createSlice({
   name: "authSlice",
-  initialState: { token: "", base_url: "http://172.22.2.99:8000/api" },
+  initialState: { token: "", base_url: "http://127.0.0.1:8000/api" },
   reducers: {
     setToken: (state, action) => {
       state.token = action.payload;
@@ -17,6 +17,8 @@ const userSlice = createSlice({
   initialState: {
     userData: {},
     userslist: [],
+    userRoleslist: [],
+    createUser: {},
   },
   reducers: {
     setUserData: (state, action) => {
@@ -24,6 +26,15 @@ const userSlice = createSlice({
     },
     setUsersListData: (state, action) => {
       state.userslist = action.payload;
+    },
+    setUserRoleListData: (state, action) => {
+      state.userRoleslist = action.payload;
+    },
+    setCreateUser: (state, action) => {
+      state.createUser = { ...state.createUser, ...action.payload };
+    },
+    setDefaultCreateUser: (state, action) => {
+      state.createUser = {};
     },
   },
 });
@@ -43,7 +54,7 @@ const projectsSlice = createSlice({
     },
     setProjectData: (state, action) => {
       state.project = action.payload;
-    }
+    },
   },
 });
 
@@ -62,6 +73,21 @@ const notesSlice = createSlice({
   },
 });
 
+const companiesSlice = createSlice({
+  name: "companiesSlice",
+  initialState: {
+    companies_list: [],
+  },
+  reducers: {
+    setComapniesData: (state, action) => {
+      state.companies_list = [];
+      action.payload.map((comp) => {
+        state.companies_list.push(comp);
+      });
+    },
+  },
+});
+
 const resetReducer = (state, action) => {
   if (action.type === "RESET") {
     return {
@@ -69,6 +95,7 @@ const resetReducer = (state, action) => {
       user: userSlice.reducer(undefined, action),
       projects: projectsSlice.reducer(undefined, action),
       notes: notesSlice.reducer(undefined, action),
+      companies: companiesSlice.reducer(undefined, action),
     };
   }
   return rootReducer(state, action);
@@ -79,6 +106,7 @@ const rootReducer = combineReducers({
   user: userSlice.reducer,
   projects: projectsSlice.reducer,
   notes: notesSlice.reducer,
+  companies: companiesSlice.reducer,
 });
 
 const persistConfig = {
@@ -99,6 +127,7 @@ const actions = {
   ...userSlice.actions,
   ...projectsSlice.actions,
   ...notesSlice.actions,
+  ...companiesSlice.actions,
   reset: () => ({ type: "RESET" }),
 };
 
