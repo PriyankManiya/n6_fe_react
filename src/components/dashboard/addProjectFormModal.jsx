@@ -231,9 +231,6 @@ export default function AddProjectForm({
                 <p>Cancel</p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+        </>
+    );
 }

@@ -18,6 +18,8 @@ import projectIcon from "../../assets/svg/Common/projectIcon.svg";
 /* Modals - Kishan J */
 import AddProjectForm from "./addProjectFormModal";
 import AddProjectFormNext from "./addProjectFormNextModal";
+import UpdateProjectFormNext from "./updateProjectFormModal";
+import UpdateProjectForm from "./updateProjectFormModal";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
