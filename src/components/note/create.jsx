@@ -1,173 +1,168 @@
-import "react-quill/dist/quill.snow.css";
-import "../../css/quillEditor.css";
-import ReactQuill from "react-quill";
-import Dropzone from "react-dropzone";
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useRef } from 'react';
 import { actions } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+import Dropzone from 'react-dropzone';
 
-import logo_svg from "../../assets/svg/Common/Logo.svg";
-import saveBtnIcon from "../../assets/svg/Common/save.png";
-import cancelBtnIcon from "../../assets/svg/Common/cancel.png";
+import { Editor } from '@tinymce/tinymce-react';
 
+import "./create.css";
+
+import n6Logo from "../../assets/svg/Common/Logo.svg";
 import userIcon from "../../assets/svg/Common/userIcon.svg";
 import logoutIcon from "../../assets/svg/Common/logoutIcon.svg";
+import addItemIcon from "../../assets/svg/Common/addItemIcon.svg";
+import cancelIcon from "../../assets/svg/Common/cancelIcon.svg";
+import attachmentIcon from "../../assets/svg/Common/attachmentIcon.svg";
 
-// const QuillNoSSRWrapper = dynamic(import("react-quill"), {
-//   ssr: false,
-//   loading: () => <p>Loading ...</p>,
-// });
+export default function create() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-const modules = {
-  toolbar: [
-    [{ header: "1" }, { header: "2" }, { font: [] }],
-    [{ size: [] }],
-    ["bold", "italic", "underline", "strike", "blockquote"],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
-    ],
-    ["link"],
-    ["clean"],
-  ],
-  clipboard: {
-    matchVisual: false,
-  },
-};
+    const { id } = useParams();
+    const baseUrl = useSelector((state) => state.auth.base_url);
+    const authToken = useSelector((state) => state.auth.token);
+    const userData = useSelector((state) => state.user.userData);
+    const notesListData = useSelector((state) => state.notes.notes_list);
 
-const formats = [
-  "header",
-  "font",
-  "size",
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "blockquote",
-  "list",
-  "bullet",
-  "indent",
-  "link",
-];
+    const setToken = (data) => dispatch(actions.setToken(data));
+    const setUserData = (data) => dispatch(actions.setUserData(data));
+    const setNotesData = (data) => dispatch(actions.setNotesData(data));
 
-export default function NoteCreate() {
-  const [value, setValue] = useState("");
+    const resetStore = () => dispatch(actions.reset());
+    const navigateLogin = () => navigate("/");
+    const navigateDashboard = () => navigate("/dashboard");
+    const navigateNote = () => navigate(-1);
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+    const logoutUser = () => {
+        setToken("");
+        resetStore();
+        navigateLogin();
+    };
 
-  const { id } = useParams();
-  const baseUrl = useSelector((state) => state.auth.base_url);
-  const authToken = useSelector((state) => state.auth.token);
-  const userData = useSelector((state) => state.user.userData);
-  const notesListData = useSelector((state) => state.notes.notes_list);
+    function ShowTinyEditor() {
+        const editorRef = useRef(null);
+        const log = () => {
+            if (editorRef.current) {
+                console.log(editorRef.current.getContent());
+            }
+        };
+        return (
+            <>
+                <Editor
+                    className="create-note-editor"
+                    apiKey='bk8m1npjoyflppg2j0luatg8am9fxl65b97tkgewkcgt89d4'
+                    onInit={(evt, editor) => editorRef.current = editor}
+                    init={{
+                        height: 500,
+                        resize: false,
+                        menubar: 'edit insert format',
+                        plugins: [
+                            'lists',
+                            'code',
+                            'paste code wordcount'
+                        ],
+                        toolbar: 'undo redo | ' +
+                            'bold italic underline backcolor | numlist bullist | alignleft aligncenter ' +
+                            'alignright alignjustify | bullist numlist outdent indent | ' +
+                            'removeformat',
+                        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                    }}
+                />
+            </>
+        );
+    }
 
-  const setToken = (data) => dispatch(actions.setToken(data));
-  const setUserData = (data) => dispatch(actions.setUserData(data));
-  const setNotesData = (data) => dispatch(actions.setNotesData(data));
+    return (
+        <>
+            <div className="general-top-bar">
+                <div className="general-top-bar-info-box">
+                    <div className="general-top-bar-logo-box">
+                        <img src={n6Logo} alt="N6 Logo" title="N6" />
+                    </div>
+                    <div className="general-top-bar-username-box" title="{userData.user_name}">
+                        <div>
+                            <img src={userIcon} alt="User Icon" />
+                        </div>
+                        <div>
+                            <p>{userData.user_name}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="general-top-bar-project-info">
+                    <p>{notesListData[0].project.name}</p>
+                    <p>&nbsp; &nbsp; &#x2022; &nbsp; &nbsp;</p>
+                    <p>{notesListData[0].project.company.name}</p>
+                </div>
+                <div className="general-top-bar-logout-box" title="Logout" onClick={() => logoutUser()} >
+                    <div>
+                        <p>Log Out</p>
+                    </div>
+                    <div>
+                        <img src={logoutIcon} alt="Logout Icon" />
+                    </div>
+                </div>
+            </div>
 
-  const resetStore = () => dispatch(actions.reset());
-  const navigateLogin = () => navigate("/");
-  const navigateDashboard = () => navigate("/dashboard");
-  const navigateNote = () => navigate(-1);
+            <div className="general-bread-and-btn-bar">
+                <div className="breadcrumbs-box">
+                    {/* Do not include '>' and spaces for linking to other pages.
+                        Only use the words. They are seperated with p tags below. */ }
+                    <p>N6</p>
+                    <p>&nbsp;&#62;&nbsp;</p>
+                    <p>Dashboard</p>
+                    <p>&nbsp;&#62;&nbsp;</p>
+                    <p>Astradone</p>
+                    <p>&nbsp;&#62;&nbsp;</p>
+                    <p>Create Note</p>
+                </div>
+            </div>
 
-  const logoutUser = () => {
-    setToken("");
-    resetStore();
-    navigateLogin();
-  };
+            <div className="create-note-input-title">
+                <input placeholder="Enter Title" />
+            </div>
 
-  return (
-    <>
-      <div className="top-bar">
-        <div className="logo-box">
-          <div className="logo">
-            <img
-              src={logo_svg}
-              alt="N6 Logo"
-              title="N6 Logo"
-              width={35}
-              height={45.8}
-            />
-          </div>
-        </div>
-        <div className="user-name-box" title="User Name">
-          <div className="user-name-square">
-            <img src={userIcon} alt="User Icon" width={25} height={25} />
-            <p>{userData.user_name}</p>
-          </div>
-        </div>
-        <div className="empty-box">
-          &nbsp;
-          {notesListData[0].project.name} --{" "}
-          {notesListData[0].project.company.name}
-        </div>
-        <div
-          className="log-out-box"
-          title="User Name"
-          onClick={() => logoutUser()}
-        >
-          <p>Log Out</p>
-          <img src={logoutIcon} alt="Log Out Icon" width={17} height={18} />
-        </div>
-      </div>
+            <div className="create-note-editor-box">
+                <ShowTinyEditor />
+            </div>
 
-      <div className="breadcrumbs">
-        <p>N6 &#62; Dashboard &#62; Astradone &#62; Create Note</p>
-      </div>
-
-      <div className="title-form">
-        <form>
-          <input
-            className="title-input"
-            type="text"
-            placeholder="Enter Title"
-            tabIndex="1"
-          />
-        </form>
-      </div>
-
-      <div className="Editor" style={{ margin: "70px" }}>
-        <ReactQuill
-          theme="snow"
-          value={value}
-          onChange={setValue}
-          modules={modules}
-          formats={formats}
-          placeholder="Write your content here ..."
-          style={{ height: "300px" }}
-        />
-      </div>
-
-      <div className="Attachment">
-        <Dropzone
-          className="dropzone"
-          onDrop={(acceptedFiles) => console.log(acceptedFiles)}
-        >
-          {({ getRootProps, getInputProps }) => (
-            <section>
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                <p>Drag and drop some files here, or click to select files</p>
-              </div>
-            </section>
-          )}
-        </Dropzone>
-      </div>
-
-      <div className="bottom-bar">
-        <button className="save" type="submit">
-          <img src={saveBtnIcon} alt="Save Note" width={26} height={26} /> Save
-        </button>
-        <button className="cancel" type="submit">
-          <img src={cancelBtnIcon} alt="Cancel" width={26} height={26} />
-          Cancel
-        </button>
-      </div>
-    </>
-  );
+            <div className="create-note-attachment-box">
+                <div className="create-note-attachment-button">
+                    <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                        {({ getRootProps, getInputProps }) => (
+                            <section>
+                                <div {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    <img src={attachmentIcon} alt="Attachment Icon" />
+                                    <p>Click to attach files</p>
+                                </div>
+                            </section>
+                        )}
+                    </Dropzone>
+                </div>
+                <div className="create-note-attachment-list">
+                </div>
+            </div>
+            <div className="note-buttons-bar">
+                <div>
+                    <div className="note-save-button">
+                        <div>
+                            <img src={addItemIcon} alt="Save Note Icon" />
+                        </div>
+                        <div>
+                            <p>Save</p>
+                        </div>
+                    </div>
+                    <div className="note-cancel-button">
+                        <div>
+                            <img src={cancelIcon} alt="Cancel Icon" />
+                        </div>
+                        <div>
+                            <p>Cancel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 }
