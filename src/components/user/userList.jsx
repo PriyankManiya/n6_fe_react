@@ -20,7 +20,6 @@ export default function UserList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [selectedNoteStatus, setselectedNoteStatus] = useState(true);
   const [companModalOpen, setCompanyModalOpen] = useState(false);
   const [userModalOpen, setUserModalOpen] = useState(false);
 
@@ -50,7 +49,6 @@ export default function UserList() {
 
   const getUserInfo = () => {
     try {
-      // Get user data
       axios
         .get(`${baseUrl}/cred/profile/`, {
           headers: {
@@ -61,7 +59,6 @@ export default function UserList() {
         .then((res) => {
           let data = res.data;
           if (data.status === 200) {
-            // notify(ToastType.SUCCESS, data.msg);
             setUserData(data.data);
           }
         });
@@ -102,7 +99,6 @@ export default function UserList() {
 
   const getUserList = () => {
     try {
-      // Get User List data
       axios
         .get(`${baseUrl}/cred/list/`, {
           headers: {
@@ -124,9 +120,17 @@ export default function UserList() {
 
   return (
     <>
-      {userModalOpen && <CreateUserModel setOpenModal={setUserModalOpen} getUserList={getUserList}/>}
+      {userModalOpen && (
+        <CreateUserModel
+          setOpenModal={setUserModalOpen}
+          getUserList={getUserList}
+        />
+      )}
       {companModalOpen && (
-        <CreateCompanyModel setOpenModal={setCompanyModalOpen} setUserModalOpen={setUserModalOpen} />
+        <CreateCompanyModel
+          setOpenModal={setCompanyModalOpen}
+          setUserModalOpen={setUserModalOpen}
+        />
       )}
 
       <div className="top-bar">
@@ -161,8 +165,9 @@ export default function UserList() {
 
       <div className="bread-and-btns-bar">
         <div className="breadcrumbs">
-          <p>N6 &#62; </p>
-          <p onClick={navigateDashboard}>Dashboard</p>
+          <p onClick={navigateDashboard}>N6 &#62; </p>
+          <p onClick={navigateDashboard}>&nbsp;Dashboard </p>
+          <p onClick={() => {}}> &nbsp;&#62;&nbsp;Manage-User</p>
         </div>
         <div className="create-options-box">
           <div
