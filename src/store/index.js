@@ -44,6 +44,8 @@ const projectsSlice = createSlice({
   initialState: {
     project_list: [],
     project: {},
+    createProject: {}
+
   },
   reducers: {
     setProjectsData: (state, action) => {
@@ -54,6 +56,12 @@ const projectsSlice = createSlice({
     },
     setProjectData: (state, action) => {
       state.project = action.payload;
+    },
+    setCreateProject: (state, action) => {
+      state.createProject = { ...state.createProject, ...action.payload };
+    },
+    setDefaultCreateProject: (state, action) => {
+      state.createProject = {};
     },
   },
 });

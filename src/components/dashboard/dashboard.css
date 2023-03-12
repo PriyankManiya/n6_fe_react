@@ -124,6 +124,7 @@
     padding-left: 10px;
     padding-right: 10px;
     margin-right: 20px;
+    cursor: pointer;
 }
 
     .manage-user-button:hover {
@@ -159,6 +160,7 @@
     padding-left: 10px;
     padding-right: 10px;
     min-width: 155px;
+    cursor: pointer;
 }
 
     .add-project-button:hover {
