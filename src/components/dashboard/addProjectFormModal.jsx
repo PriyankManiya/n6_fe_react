@@ -25,7 +25,6 @@ export default function AddProjectForm({
 
   const setCreateProject = (data) => dispatch(actions.setCreateProject(data));
   const setComapniesData = (data) => dispatch(actions.setComapniesData(data));
-  
 
   const companiesListData = useSelector(
     (state) => state.companies.companies_list
@@ -231,6 +230,9 @@ export default function AddProjectForm({
                 <p>Cancel</p>
               </div>
             </div>
-        </>
-    );
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
