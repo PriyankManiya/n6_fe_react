@@ -22,6 +22,9 @@ export default function AddProjectFormNext({
   const setDefaultCreateProject = () =>
     dispatch(actions.setDefaultCreateProject());
 
+  /**
+   * It takes the data from the form and sends it to the backend to create a new project
+   */
   const addProject = () => {
     try {
       axios
@@ -57,6 +60,9 @@ export default function AddProjectFormNext({
     setShowAddProjectFromNext(false);
   };
 
+  /**
+   * It updates the project details in the database
+   */
   const updateProject = () => {
     try {
       axios
@@ -92,6 +98,9 @@ export default function AddProjectFormNext({
     setShowAddProjectFromNext(false);
   };
 
+  /**
+   * It fetches the data from the backend and sets the state of the component
+   */
   const getProjects = () => {
     try {
       // Get projects data

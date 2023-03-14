@@ -2,6 +2,7 @@ import { configureStore, createSlice, combineReducers } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+/* Creating a slice of the redux store. */
 const authSlice = createSlice({
   name: "authSlice",
   initialState: { token: "", base_url: "http://127.0.0.1:8000/api" },
@@ -12,6 +13,7 @@ const authSlice = createSlice({
   },
 });
 
+/* Creating a slice of the redux store. */
 const userSlice = createSlice({
   name: "userSlice",
   initialState: {
@@ -39,6 +41,7 @@ const userSlice = createSlice({
   },
 });
 
+/* Creating a slice of the redux store. */
 const projectsSlice = createSlice({
   name: "projectsSlice",
   initialState: {
@@ -66,6 +69,7 @@ const projectsSlice = createSlice({
   },
 });
 
+/* Creating a slice of the redux store. */
 const notesSlice = createSlice({
   name: "notesSlice",
   initialState: {
@@ -81,6 +85,7 @@ const notesSlice = createSlice({
   },
 });
 
+/* Creating a slice of the redux store. */
 const companiesSlice = createSlice({
   name: "companiesSlice",
   initialState: {
@@ -96,6 +101,13 @@ const companiesSlice = createSlice({
   },
 });
 
+/**
+ * If the action type is RESET, then return a new state object with all the reducers reset to their
+ * initial state
+ * @param state - The current state of the Redux store.
+ * @param action - The action object that was dispatched.
+ * @returns The rootReducer is being returned.
+ */
 const resetReducer = (state, action) => {
   if (action.type === "RESET") {
     return {
@@ -109,6 +121,7 @@ const resetReducer = (state, action) => {
   return rootReducer(state, action);
 };
 
+/* Combining all the reducers into one reducer. */
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
   user: userSlice.reducer,
@@ -117,19 +130,28 @@ const rootReducer = combineReducers({
   companies: companiesSlice.reducer,
 });
 
+/* This is the configuration for the redux-persist library. */
 const persistConfig = {
   key: "root",
   storage,
 };
 
+/* The `persistReducer` function is a function from the `redux-persist` library. It takes two
+arguments, the first argument is the configuration object for the `redux-persist` library. The
+second argument is the reducer that you want to persist. */
 const persistedReducer = persistReducer(persistConfig, resetReducer);
 
+/* This is the configuration for the redux store. */
 const store = configureStore({
   reducer: persistedReducer,
 });
 
+/* The `persistStore` function is a function from the `redux-persist` library. It takes one
+argument, the redux store. It returns a persistor object. The persistor object has a `purge`
+function that can be used to clear the persisted state. */
 const persistor = persistStore(store);
 
+/* Exporting all the actions from the redux store. */
 const actions = {
   ...authSlice.actions,
   ...userSlice.actions,

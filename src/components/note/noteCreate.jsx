@@ -42,12 +42,18 @@ export default function NoteCreate() {
   const navigateToProject = (id) => navigate("/note/" + id);
   const navigateNote = () => navigate(-1);
 
+/**
+ * It clears the token and resets the store.
+ */
   const logoutUser = () => {
     setToken("");
     resetStore();
     navigateLogin();
   };
 
+  /**
+   * It saves the content of the editor and the attachments to the database.
+   */
   const saveContent = async () => {
     if (editorRef.current) {
       console.log("content_html >>>> ", editorRef.current.getContent());
@@ -57,6 +63,9 @@ export default function NoteCreate() {
     _postNote();
   };
 
+  /**
+   * _postNote() is a function that creates a new note
+   */
   const _postNote = () => {
     try {
       axios

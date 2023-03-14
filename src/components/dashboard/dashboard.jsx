@@ -51,6 +51,11 @@ export default function Dashboard() {
   const navigateHome = () => navigate("/");
   const navigateUserList = () => navigate("/user-list");
 
+/**
+ * It takes the id of the project that was clicked on, and then it loops through the projectsListData
+ * array to find the project with the matching id. Once it finds the matching project, it sets the
+ * projectData state to that project, and then it navigates to the note page
+ */
   const navigateNotes = (id) => {
     for (let i = 0; i < projectsListData.length; i++) {
       if (projectsListData[i].id === id) {
@@ -61,12 +66,18 @@ export default function Dashboard() {
     navigate("/note/" + id);
   };
 
+/**
+ * It clears the token and resets the store.
+ */
   const logoutUser = () => {
     setToken("");
     resetStore();
     navigateHome();
   };
 
+  /**
+   * It fetches the user data from the backend and sets the state of the user data
+   */
   const getUserInfo = () => {
     try {
       axios
@@ -90,6 +101,9 @@ export default function Dashboard() {
     console.log("Projects Called");
   };
 
+  /**
+   * It fetches the list of projects from the backend and sets the state of the component
+   */
   const getProjects = () => {
     try {
       axios
@@ -112,6 +126,9 @@ export default function Dashboard() {
     }
   };
 
+  /**
+   * It fetches the list of companies from the backend and sets the state of the component
+   */
   const getCompanyList = () => {
     try {
       axios
@@ -138,6 +155,9 @@ export default function Dashboard() {
     }
   };
 
+  /**
+   * A function that is used to update the status of a project.
+   */
   const UpdateProjectStatus = (id, is_active) => {
     try {
       axios
@@ -175,6 +195,7 @@ export default function Dashboard() {
     getCompanyList();
   }, []);
 
+  /* The above code is a React component that is used to display a modal. */
   function Model({ setOpenModal }) {
     return (
       <div className="modalBackground">

@@ -16,6 +16,10 @@ export default function NewPassword() {
   const [password2, _setPasswd2] = useState("");
 
 
+  /**
+   * It sends a POST request to the server with the old password, new password and new password
+   * confirmation
+   */
   const updatePassword = async () => {
     let response;
     try {

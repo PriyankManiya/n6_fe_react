@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import new_foget_svg from "../../assets/svg/Authentication/new_forget.svg";
 import logo_svg from "../../assets/svg/Common/Logo.svg";
 
+/**
+ * It renders a login form with a username field and a submit button
+ */
 export default function Forgetpassword() {
   const navigate = useNavigate();
   const baseUrl = useSelector((state) => state.auth.base_url);
@@ -16,6 +19,10 @@ export default function Forgetpassword() {
 
   const navigateSignIn = () => navigate("/login");
 
+  /**
+   * It sends a post request to the server with the username of the user who wants to reset his
+   * password
+   */
   const forgetPassword = async () => {
     let response;
     try {

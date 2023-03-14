@@ -27,6 +27,9 @@ export default function CreateCompanyModel({ setOpenModal, setUserModalOpen }) {
   const setComapniesData = (data) => dispatch(actions.setComapniesData(data));
   const setCreateUser = (data) => dispatch(actions.setCreateUser(data));
 
+  /**
+   * It fetches the list of companies from the backend and sets the state of the component
+   */
   const getCompanyList = () => {
     try {
       // Get Companies List data
@@ -54,6 +57,7 @@ export default function CreateCompanyModel({ setOpenModal, setUserModalOpen }) {
     }
   };
 
+/* A hook that is called when the component is mounted. */
   useEffect(() => {
     getCompanyList();
     setCompanies([]);

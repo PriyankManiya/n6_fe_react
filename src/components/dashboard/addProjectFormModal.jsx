@@ -32,6 +32,10 @@ export default function AddProjectForm({
 
   const projectsListData = useSelector((state) => state.projects.project_list);
 
+  /**
+   * It's a function that takes in a projectId and a projectsListData and returns a selectedCompany
+   * object
+   */
   const findselectedCompany = () => {
     projectId !== 0 &&
       projectsListData.filter((item) => {
@@ -50,6 +54,9 @@ export default function AddProjectForm({
       });
   };
 
+  /**
+   * It takes in an object as an argument and then sends a post request to the backend to add a company
+   */
   const addCompany = (info) => {
     try {
       axios
@@ -85,6 +92,9 @@ export default function AddProjectForm({
     }
   };
 
+  /**
+   * It fetches the list of companies from the backend and sets the state of the component
+   */
   const getCompanyList = () => {
     try {
       // Get Companies List data
@@ -112,6 +122,9 @@ export default function AddProjectForm({
     }
   };
 
+  /**
+   * It sets the companies list data.
+   */
   const setCompanyListData = () => {
     setCompanies([]);
     companiesListData.map((item) => {
