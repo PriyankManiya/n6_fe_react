@@ -11,7 +11,7 @@ import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 
 import { notify, ToastType } from "../utils";
 
-import logo_svg from "../../assets/svg/Common/Logo.svg";
+import n6Logo from "../../assets/svg/Common/Logo.svg";
 import userIcon from "../../assets/svg/Common/userIcon.svg";
 import logoutIcon from "../../assets/svg/Common/logoutIcon.svg";
 import noteIcon from "../../assets/svg/Common/noteIcon.svg";
@@ -189,36 +189,34 @@ export default function Note() {
     <>
       {modalOpen && <Model setOpenModal={setModalOpen} />}
 
-      <div className="top-bar">
-        <div className="logo-box">
-          <div className="logo">
-            <img
-              src={logo_svg}
-              alt="N6 Logo"
-              title="N6 Logo"
-              width={35}
-              height={45.8}
-            />
-          </div>
-        </div>
-        <div className="user-name-box" title="User Name">
-          <div className="user-name-square">
-            <img src={userIcon} alt="User Icon" width={25} height={25} />
-            <p>{userData.user_name}</p>
-          </div>
-        </div>
-        <div className="empty-box">
-          &nbsp; {projectData.name} -- {projectData.company.name}
-        </div>
-        <div
-          className="log-out-box"
-          title="User Name"
-          onClick={() => logoutUser()}
-        >
-          <p>Log Out</p>
-          <img src={logoutIcon} alt="Log Out Icon" width={17} height={18} />
-        </div>
-      </div>
+      <div className="general-top-bar">
+                <div className="general-top-bar-info-box">
+                    <div className="general-top-bar-logo-box">
+                        <img src={n6Logo} alt="N6 Logo" title="N6" />
+                    </div>
+                    <div className="general-top-bar-username-box" title="{userData.user_name}">
+                        <div>
+                            <img src={userIcon} alt="User Icon" />
+                        </div>
+                        <div>
+                            <p>{userData.user_name}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="general-top-bar-project-info">
+                    <p>{projectData.name}</p>
+                    <p>&nbsp; &nbsp; &#x2022; &nbsp; &nbsp;</p>
+                    <p>{projectData.company.name}</p>
+                </div>
+                <div className="general-top-bar-logout-box" title="Logout" onClick={() => logoutUser()} >
+                    <div>
+                        <p>Log Out</p>
+                    </div>
+                    <div>
+                        <img src={logoutIcon} alt="Logout Icon" />
+                    </div>
+                </div>
+            </div>
 
       <div className="bread-and-btns-bar">
         <div className="breadcrumbs">

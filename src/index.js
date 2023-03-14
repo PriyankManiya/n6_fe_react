@@ -14,7 +14,7 @@ import Forgetpassword from './components/auth/forgotPassword';
 import ResetPasswordLink from './components/auth/resetPasswordLink';
 import Dashboard from './components/dashboard/dashboard';
 import Note from './components/note/note';
-import NoteCreate from './components/note/create';
+import NoteCreate from './components/note/noteCreate';
 import UserList from './components/user/userList';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
