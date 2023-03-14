@@ -17,6 +17,8 @@ import Note from './components/note/note';
 import NoteCreate from './components/note/create';
 import UserList from './components/user/userList';
 
+import ViewNote from './components/note/viewNote';
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -35,6 +37,9 @@ root.render(
             <Route path="/note/:id" element={<Note />} />
             <Route path="/note-create" element={<NoteCreate />} />
             <Route path="/user-list" element={<UserList />} />
+
+                        <Route path="/viewnote" element={<ViewNote />} />
+
           </Routes>
         </Router>
       </React.StrictMode>
