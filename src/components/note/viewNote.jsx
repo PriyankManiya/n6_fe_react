@@ -10,6 +10,7 @@ import userIcon from "../../assets/svg/Common/userIcon.svg";
 import logoutIcon from "../../assets/svg/Common/logoutIcon.svg";
 import addItemIcon from "../../assets/svg/Common/addItemIcon.svg";
 import cancelIcon from "../../assets/svg/Common/cancelIcon.svg";
+import respondIcon from "../../assets/svg/Common/respondIcon.svg";
 import attachmentIcon from "../../assets/svg/Common/attachmentIcon.svg";
 
 export default function create() {
@@ -62,17 +63,57 @@ export default function create() {
             <div className="primary-note-container">
                 <div className="primary-note">
                     <div className="primary-note-title-container">
-                        <p></p>
+                        <p>Note Title</p>
                     </div>
                     <div className="primary-note-content-container">
+                        <p>
+                            Welcome to the Online Course Blueprint for Awesome. This blueprint should be used as a guide and starting place to get your first (or twentieth) online course off the ground.
 
+                            Most online courses start off with a great welcome post used to draw students in and prepare them for the road ahead.
+                            It is very effective to add a video to this post to introduce yourself as the instructor.
+                            Course and the lesson materials used for this course.
+
+                            Welcome to the Online Course Blueprint for Awesome. This blueprint should be used as a guide and starting place to get your first (or twentieth) online course off the ground.
+                        </p>
                     </div>
                     <div className="primary-note-info-and-respond-container">
-
+                        <div className="primary-note-author-info-container">
+                            <div className="primary-note-author-name">
+                                <p>Author Name</p>
+                            </div>
+                            <div className="primary-note-timestamp">
+                                <p>mmm dd, yyyy hh:mm AM</p>
+                            </div>
+                        </div>
+                        <div className="primary-note-read-status-container">
+                            <p>Unread</p>
+                        </div>
+                        <div className="primary-note-options-container">
+                            <div className="primary-note-edit-button-container">
+                                <div className="primary-note-edit-button">
+                                    <div>
+                                        
+                                    </div>
+                                    <div>
+                                        <p>Edit</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="primary-note-respond-button-container">
+                                <div className="primary-note-respond-button">
+                                    <div>
+                                        <img src={respondIcon} alt="Respond Icon" />
+                                    </div>
+                                    <div>
+                                        <p>Respond</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="primary-note-attachments-container">
-                    
+
                 </div>
             </div>
 
