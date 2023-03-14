@@ -38,7 +38,7 @@ root.render(
             <Route path="/note-create" element={<NoteCreate />} />
             <Route path="/user-list" element={<UserList />} />
 
-                        //<Route path="/viewnote" element={<ViewNote />} />
+                        {/* <Route path="/viewnote" element={<ViewNote />} /> */}
 
           </Routes>
         </Router>
