@@ -15,6 +15,8 @@ import n6Logo from "../../assets/svg/Common/Logo.svg";
 import userIcon from "../../assets/svg/Common/userIcon.svg";
 import logoutIcon from "../../assets/svg/Common/logoutIcon.svg";
 import noteIcon from "../../assets/svg/Common/noteIcon.svg";
+import NoteBreadCrumbs from "./noteBreadCrumbs";
+import NoteHeader from "./noteHeader";
 
 export default function Note() {
   const dispatch = useDispatch();
@@ -39,9 +41,9 @@ export default function Note() {
   const navigateLogin = () => navigate("/");
   const navigateDashboard = () => navigate("/dashboard");
 
-/**
- * The useEffect hook is used to call the getUserInfo and getNotes functions when the component mounts
- */
+  /**
+   * The useEffect hook is used to call the getUserInfo and getNotes functions when the component mounts
+   */
   const logoutUser = () => {
     setToken("");
     resetStore();
@@ -109,10 +111,10 @@ export default function Note() {
     }
   };
 
- /**
-  * It takes a noteId as an argument and then makes a DELETE request to the server with the noteId as
-  * the data
-  */
+  /**
+   * It takes a noteId as an argument and then makes a DELETE request to the server with the noteId as
+   * the data
+   */
   const disableNote = (noteId) => {
     try {
       axios
@@ -209,41 +211,8 @@ export default function Note() {
     <>
       {modalOpen && <Model setOpenModal={setModalOpen} />}
 
-      <div className="general-top-bar">
-                <div className="general-top-bar-info-box">
-                    <div className="general-top-bar-logo-box">
-                        <img src={n6Logo} alt="N6 Logo" title="N6" />
-                    </div>
-                    <div className="general-top-bar-username-box" title="{userData.user_name}">
-                        <div>
-                            <img src={userIcon} alt="User Icon" />
-                        </div>
-                        <div>
-                            <p>{userData.user_name}</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="general-top-bar-project-info">
-                    <p>{projectData.name}</p>
-                    <p>&nbsp; &nbsp; &#x2022; &nbsp; &nbsp;</p>
-                    <p>{projectData.company.name}</p>
-                </div>
-                <div className="general-top-bar-logout-box" title="Logout" onClick={() => logoutUser()} >
-                    <div>
-                        <p>Log Out</p>
-                    </div>
-                    <div>
-                        <img src={logoutIcon} alt="Logout Icon" />
-                    </div>
-                </div>
-            </div>
-
-      <div className="bread-and-btns-bar">
-        <div className="breadcrumbs">
-          <p>N6 </p> <p onClick={navigateDashboard}> &nbsp; &#62; Dashboard</p>{" "}
-          <p> &nbsp; &#62; {projectData.name} </p>
-        </div>
-      </div>
+      <NoteHeader />
+      <NoteBreadCrumbs />
 
       {notesListData.map((note) => {
         return (

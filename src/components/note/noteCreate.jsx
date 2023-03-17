@@ -110,7 +110,7 @@ export default function NoteCreate() {
             //     "file is typeof >>>> ",
             //     typeof new File(attachments[file])
             //   );
-            // navigateToProject(projectData.id);
+            navigateToProject(projectData.id);  
           }
         });
     } catch (error) {
