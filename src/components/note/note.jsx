@@ -213,7 +213,7 @@ export default function Note() {
 
             {notesListData.map((note) => {
                 return (
-                    <div className="note-list-box" onClick={()=>navigateViewNote(note.id)}>
+                    <div className="note-list-box" >
                         <div
                             className="note-box"
                             style={{
@@ -221,9 +221,9 @@ export default function Note() {
                                     note.is_active === true ? "white" : "lightgrey",
                             }}
                         >
-                            <div className="note-info-box" onClick={() => { }}>
+                            <div className="note-info-box" onClick={() => navigateViewNote(note.id)}>
                                 <div>
-                                    <img src={noteIcon} alt="Note Icon" width={35} height={35} />
+                                    <img src={noteIcon} alt="Note Icon" width={28}/>
                                 </div>
                                 <div>
                                     <p>{note.topic}</p>

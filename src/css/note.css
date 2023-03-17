@@ -1,6 +1,6 @@
 .note-list-box {
   margin: auto;
-  margin-top: 30px;
+  margin-top: 50px;
   width: 86%;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,7 @@
 
 .note-box {
   width: 100%;
+  height: 45px;
   border: 1.5px solid black;
   border-radius: 20px;
   display: flex;
@@ -29,23 +30,21 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 10px;
   width: 95%;
   cursor: pointer;
 }
 
 .note-info-box div:nth-child(2) {
-  margin-left: 15px;
+  margin-left: 10px;
 }
 
 .note-info-box div:nth-child(2) p:first-child {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
 }
 
 .note-info-box div:nth-child(2) p:nth-child(2) {
   font-size: 12px;
-  margin-top: 2px;
 }
 
 .note-options {
@@ -56,7 +55,6 @@
 }
 
 .note-options div:first-child {
-  margin-right: 10px;
   cursor: pointer;
 }
 .menu-block {
