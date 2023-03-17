@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 import { notify, ToastType } from "../utils";
 
-
-export default function ViewNoteBreadCrumbs() {
+export default function ViewNoteBreadCrumbs({ noteName }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,6 +19,7 @@ export default function ViewNoteBreadCrumbs() {
   const setUserData = (data) => dispatch(actions.setUserData(data));
 
   const navigateDashboard = () => navigate("/dashboard");
+  const navigateNote = () => navigate(-1);
 
   useEffect(() => {
     getUserInfo();
@@ -56,8 +56,8 @@ export default function ViewNoteBreadCrumbs() {
       <div className="general-bread-and-btn-bar">
         <div className="breadcrumbs-box">
           <p>N6 </p> <p onClick={navigateDashboard}> &nbsp; &#62; Dashboard</p>{" "}
-          <p> &nbsp; &#62; {projectData.name} </p>
-          <p> &nbsp; &#62; View Note </p>
+          <p onClick={navigateNote}> &nbsp; &#62; {projectData.name} </p>
+          <p> &nbsp; &#62; {noteName} </p>
         </div>
       </div>
     </>

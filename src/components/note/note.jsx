@@ -212,7 +212,7 @@ export default function Note() {
 
             {notesListData.map((note) => {
                 return (
-                    <div className="note-list-box">
+                    <div className="note-list-box" onClick={()=>navigateViewNote(note.id)}>
                         <div
                             className="note-box"
                             style={{

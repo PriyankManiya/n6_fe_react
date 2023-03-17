@@ -40,13 +40,12 @@ export default function ViewNote() {
   const setNoteData = (data) => dispatch(actions.setNoteData(data));
 
   const getRespondedNote = (id) => {
-    const isd = 1;
     if (id) {
       try {
         // Get Responded Note data
         axios
           .get(
-            `${baseUrl}/note/respond/${isd}`,
+            `${baseUrl}/note/respond/${id}`,
 
             {
               headers: {
@@ -78,7 +77,7 @@ export default function ViewNote() {
   return (
     <>
       <NoteHeader />
-      <ViewNoteBreadCrumbs />
+      <ViewNoteBreadCrumbs noteName={noteData["original_note"]["topic"]} />
 
       <div className="primary-note-container">
         <div className="primary-note">
@@ -157,13 +156,11 @@ export default function ViewNote() {
                     </p>
                   </div>
                   <div className="respond-note-timestamp">
-                    <p>{formateTIme(item['created_at'])}</p>
+                    <p>{formateTIme(item["created_at"])}</p>
                   </div>
                 </div>
                 <div className="respond-note-read-status-container">
-                  <p>{item["read_tf"] === true
-                  ? "Read"
-                  : "Unread"}</p>
+                  <p>{item["read_tf"] === true ? "Read" : "Unread"}</p>
                 </div>
                 <div className="respond-note-options-container">
                   <div className="respond-note-edit-button-container">
