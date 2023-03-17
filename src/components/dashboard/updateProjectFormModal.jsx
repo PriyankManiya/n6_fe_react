@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
-import "./dashboard.css";
+import "../../css/general.css";
+import "../../css/dashboard.css";
+import "../../css/dashboardModals.css";
 
 import { useSelector, useDispatch } from "react-redux";
 

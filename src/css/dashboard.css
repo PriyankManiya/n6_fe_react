@@ -1,0 +1,163 @@
+.manage-user-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1E3A8A;
+    border-radius: 17px;
+    padding: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-right: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+    .manage-user-button:hover {
+        box-shadow: 0 0 20px rgba(30, 58, 138, 0.5);
+    }
+
+        .manage-user-button:hover div:nth-child(2) p {
+            font-weight: 500;
+        }
+
+    .manage-user-button div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 7px;
+    }
+
+        .manage-user-button div:first-child img {
+            width: 25px;
+        }
+
+    .manage-user-button div:nth-child(2) p {
+        color: white;
+    }
+
+.add-project-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1E3A8A;
+    border-radius: 17px;
+    padding: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 155px;
+    cursor: pointer;
+}
+
+    .add-project-button:hover {
+        box-shadow: 0 0 20px rgba(30, 58, 138, 0.5);
+    }
+
+        .add-project-button:hover div:nth-child(2) p {
+            font-weight: 500;
+        }
+
+    .add-project-button div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 7px;
+    }
+
+        .add-project-button div:first-child img {
+            width: 27px;
+        }
+
+    .add-project-button div:nth-child(2) p {
+        color: white;
+    }
+
+.project-list-box {
+    margin: auto;
+    margin-top: 30px;
+    width: 86%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.project-box {
+    width: 360px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2.5px solid #1E3A8A;
+    background-color: #1E3A8A;
+    border-radius: 20px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+    .project-box:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+.project-info-box {
+    width: 100%;
+    flex: 0.25;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1E3A8A;
+    color: white;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+    .project-info-box div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 8px;
+    }
+
+        .project-info-box div:first-child div:nth-child(2) {
+            margin-left: 5px;
+        }
+
+    .project-info-box p:first-child {
+        font-size: 20px;
+    }
+
+    .project-info-box p:nth-child(2) {
+        margin-top: 4px;
+        font-size: 14px;
+    }
+
+
+.project-options {
+    margin-right: 20px;
+}
+
+.kebab-icon-dashboard {
+    display: block;
+    width: 6px;
+    height: 6px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 1;
+}
+
+.project-description-box {
+    flex: 0.75;
+    width: 100%;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    background-color: #F6F3F3;
+}
+
+    .project-description-box p {
+        font-size: 15px;
+        font-weight: 500;
+        margin: 20px 20px 20px 20px;
+    }

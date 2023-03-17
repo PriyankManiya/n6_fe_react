@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./dashboard.css";
+import "../../css/general.css";
+import "../../css/dashboard.css";
+import "../../css/dashboardModals.css";
 
 import axios from "axios";
 import { actions } from "../../store";

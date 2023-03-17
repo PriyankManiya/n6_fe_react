@@ -1,4 +1,6 @@
-import "./dashboard.css";
+import "../../css/general.css";
+import "../../css/dashboard.css";
+import "../../css/dashboardModals.css";
 
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
