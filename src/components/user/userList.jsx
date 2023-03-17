@@ -12,10 +12,10 @@ import { notify, ToastType } from "../utils";
 import CreateCompanyModel from "./createCompanyModel";
 import CreateUserModel from "./createUserModel";
 
-import logo_svg from "../../assets/svg/Common/Logo.svg";
+import n6Logo from "../../assets/svg/Common/Logo.svg";
 import userIcon from "../../assets/svg/Common/userIcon.svg";
 import logoutIcon from "../../assets/svg/Common/logoutIcon.svg";
-import addItemIcon from "../../assets/svg/Common/addItemIcon.svg";
+import projectIcon from "../../assets/svg/Common/projectIcon.svg";
 
 export default function UserList() {
     const dispatch = useDispatch();
