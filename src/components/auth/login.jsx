@@ -22,6 +22,10 @@ const Login = () => {
   const navigateForgetPasswd = () => navigate("/forget-password");
   const navigateDashboard = () => navigate("/dashboard");
 
+/**
+ * It sends a POST request to the server with the username and password, and if the response is
+ * successful, it sets the token and navigates to the dashboard
+ */
   const loginUser = async () => {
     let response;
     try {

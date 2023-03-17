@@ -35,6 +35,9 @@ export default function UserList() {
   const resetStore = () => dispatch(actions.reset());
   const navigateHome = () => navigate("/");
   const navigateDashboard = () => navigate("/dashboard");
+/**
+ * It clears the token and resets the store.
+ */
 
   const logoutUser = () => {
     setToken("");
@@ -42,11 +45,15 @@ export default function UserList() {
     navigateHome();
   };
 
+/* A react hook that is called when the component is mounted. */
   useEffect(() => {
     getUserInfo();
     getUserList();
   }, []);
 
+  /**
+   * It fetches the user data from the backend and sets the state of the user data
+   */
   const getUserInfo = () => {
     try {
       axios
@@ -67,6 +74,10 @@ export default function UserList() {
       notify(ToastType.ERROR, "Something went wrong. Please try again later.");
     }
   };
+
+  /**
+   * It updates the user status by sending a PUT request to the server
+   */
   const updateUserStatus = (uid, is_active) => {
     try {
       // Get user data
@@ -97,6 +108,9 @@ export default function UserList() {
     }
   };
 
+  /**
+   * It fetches the list of users from the backend and sets the state of the usersListData variable
+   */
   const getUserList = () => {
     try {
       axios

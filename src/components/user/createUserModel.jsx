@@ -39,6 +39,9 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
   const setCreateUser = (data) => dispatch(actions.setCreateUser(data));
   const setDefaultCreateUser = () => dispatch(actions.setDefaultCreateUser());
 
+/**
+ * It fetches the user roles list from the backend and sets the state of the user role list data
+ */
   const getUserRolesList = () => {
     try {
       axios
@@ -64,6 +67,11 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
       notify(ToastType.ERROR, "Something went wrong. Please try again later.");
     }
   };
+
+  /**
+   * It takes a userId as an argument and then makes an axios post request to the backend with the
+   * userId and some other data
+   */
   const createCred = (userId) => {
 
 
@@ -95,6 +103,9 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
       });
   };
 
+  /**
+   * It creates a user and then creates a credential for that user
+   */
   const createUser = () => {
     try {
       axios
@@ -129,6 +140,8 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
       notify(ToastType.ERROR, "Something went wrong. Please try again later.");
     }
   };
+  
+  /* Fetching the user roles list from the backend and setting the state of the user role list data */
   useEffect(() => {
     getUserRolesList();
     setRoles([]);

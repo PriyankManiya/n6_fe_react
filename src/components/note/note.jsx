@@ -39,6 +39,9 @@ export default function Note() {
   const navigateLogin = () => navigate("/");
   const navigateDashboard = () => navigate("/dashboard");
 
+/**
+ * The useEffect hook is used to call the getUserInfo and getNotes functions when the component mounts
+ */
   const logoutUser = () => {
     setToken("");
     resetStore();
@@ -50,6 +53,9 @@ export default function Note() {
     getNotes(id);
   }, []);
 
+  /**
+   * It gets the user data from the backend and sets it to the state
+   */
   const getUserInfo = () => {
     try {
       // Get user data
@@ -73,6 +79,9 @@ export default function Note() {
     }
   };
 
+  /**
+   * It gets the notes data from the backend and sets the state of the notes data
+   */
   const getNotes = (id) => {
     if (id) {
       try {
@@ -100,6 +109,10 @@ export default function Note() {
     }
   };
 
+ /**
+  * It takes a noteId as an argument and then makes a DELETE request to the server with the noteId as
+  * the data
+  */
   const disableNote = (noteId) => {
     try {
       axios
@@ -124,6 +137,9 @@ export default function Note() {
     }
   };
 
+  /**
+   * It enables a note by making a PUT request to the server
+   */
   const enableNote = (noteId) => {
     try {
       axios
@@ -149,6 +165,10 @@ export default function Note() {
     }
   };
 
+  /**
+   * This function is a modal that pops up when the user clicks the delete button
+   * @returns A modal that is displayed when the user clicks on the delete button.
+   */
   function Model({ setOpenModal }) {
     return (
       <div className="modalBackground">
