@@ -112,11 +112,24 @@
     justify-content: flex-start;
 }
 
-    .breadcrumbs-box p {
-        margin: 0;
-        color: #1E3A8A;
-        font-weight: bold;
-        font-size: 20px;
+.breadcrumbs-arrows {
+    color: #1E3A8A;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.breadcrumbs-titles {
+    color: #1E3A8A;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.breadcrumbs-titles-links {
+    cursor: pointer;
+}
+
+    .breadcrumbs-titles-links:hover {
+        color: #2c56c9;
     }
 
 .btn-box {

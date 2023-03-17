@@ -279,9 +279,9 @@ export default function Dashboard() {
 
             <div className="general-bread-and-btn-bar">
                 <div className="breadcrumbs-box">
-                    <p>N6</p>
-                    <p>&nbsp;&#62;&nbsp;</p>
-                    <p>Dashboard</p>
+                    <p className="breadcrumbs-titles">N6</p>
+                    <p className="breadcrumbs-arrows">&nbsp;&#62;&nbsp;</p>
+                    <p className="breadcrumbs-titles">Dashboard</p>
                 </div>
 
                 {userData.user_level_id !== 1 ? (
