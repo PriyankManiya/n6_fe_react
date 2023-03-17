@@ -53,6 +53,19 @@
             color: white;
         }
 
+.general-top-bar-project-info {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .general-top-bar-project-info > p {
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
 .general-top-bar-logout-box {
     height: 35px;
     display: flex;
