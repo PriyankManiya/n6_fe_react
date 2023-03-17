@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "../../css/note.css";
+import "../../css/general.css";
 import "../../css/model.css";
 
 import axios from "axios";
