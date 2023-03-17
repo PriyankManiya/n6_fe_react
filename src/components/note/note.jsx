@@ -44,6 +44,7 @@ export default function Note() {
   const navigateLogin = () => navigate("/");
   const navigateDashboard = () => navigate("/dashboard");
   const navigateViewNote = (id) => navigate("/viewnote/" + id);
+  const navigateNoteCreate = () => navigate("/note-create/");
 
 
     useEffect(() => {
@@ -273,7 +274,7 @@ export default function Note() {
             <div className="bottom-spacer">&nbsp;</div>
             <div className="note-buttons-bar">
                 <div>
-                    <div className="note-create-button">
+                    <div className="note-create-button" onClick={navigateNoteCreate}>
                         <div>
                             <img src={addItemIcon} alt="Create Note Icon" />
                         </div>

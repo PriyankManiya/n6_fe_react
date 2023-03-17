@@ -55,10 +55,10 @@ export default function NoteCreate() {
    * It saves the content of the editor and the attachments to the database.
    */
   const saveContent = async () => {
+    console.log("topic >>>> ");
     if (editorRef.current) {
       console.log("content_html >>>> ", editorRef.current.getContent());
     }
-    console.log("attachments >>>> ", attachments.length);
 
     _postNote();
   };
@@ -88,28 +88,6 @@ export default function NoteCreate() {
           let data = res.data;
           if (data.status === 200 || data.status === 201) {
             notify(ToastType.SUCCESS, "Note Created Successfully.");
-            console.log("attachments >>>> ", attachments.length);
-            // try {
-            //   attachments.forEach(async (file) => {
-            //     let t = {
-            //       myFile: file,
-            //     };
-            //     await saveAttachments(data.id, t["myFile"]);
-            //     // console.log("file  MYFILE >>>> ", t["myFile"]);
-            //   });
-            // } catch (error) {
-            //   console.log("error >>>> ", error);
-            // }
-
-            //   console.log("file is hererere >>>> ", attachments[file]);
-            //   const test = new File([null], attachments[file]["name"], {
-            //     type: attachments[file]["type"],
-            //     lastModified: attachments[file]["lastModified"],
-            //   });
-            //   console.log(
-            //     "file is typeof >>>> ",
-            //     typeof new File(attachments[file])
-            //   );
             navigateToProject(projectData.id);  
           }
         });
@@ -261,7 +239,7 @@ export default function NoteCreate() {
       </div>
       <div className="note-buttons-bar">
         <div>
-          <div onClick={saveContent} className="note-save-button">
+          <div onClick={() => saveContent()} className="note-save-button">
             <div>
               <img src={addItemIcon} alt="Save Note Icon" />
             </div>
