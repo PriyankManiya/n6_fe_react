@@ -396,7 +396,9 @@ export default function Dashboard() {
                                     onClick={() => navigateNotes(project.id)}
                                     className="project-description-box"
                                 >
-                                    <p>{project.description}</p>
+                                    <div>
+                                        <p>{project.description}</p>
+                                    </div>
                                 </div>
                             </div>
                         );

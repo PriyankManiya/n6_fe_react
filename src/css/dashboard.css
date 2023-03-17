@@ -154,10 +154,20 @@
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
     background-color: #F6F3F3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-    .project-description-box p {
-        font-size: 15px;
-        font-weight: 500;
-        margin: 20px 20px 20px 20px;
+    .project-description-box > div:first-child {
+        flex: 1;
+        margin: 10px;
+        overflow-y: auto;
+        max-height: 200px;
     }
+
+        .project-description-box > div:first-child > p {
+            font-size: 15px;
+            font-weight: 500;
+        }
