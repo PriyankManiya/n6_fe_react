@@ -47,7 +47,8 @@ export default function Dashboard() {
     const setProjectsData = (data) => dispatch(actions.setProjectsData(data));
     const setProjectData = (data) => dispatch(actions.setProjectData(data));
     const setComapniesData = (data) => dispatch(actions.setComapniesData(data));
-    const setDefaultCreateProject = () => dispatch(actions.setDefaultCreateProject());
+    const setDefaultCreateProject = () =>
+        dispatch(actions.setDefaultCreateProject());
 
     const resetStore = () => dispatch(actions.reset());
     const navigateHome = () => navigate("/");
@@ -299,8 +300,8 @@ export default function Dashboard() {
                         <div
                             className="add-project-button"
                             onClick={() => {
-                                setDefaultCreateProject()
-                                setShowAddProjectFrom(true)
+                                setDefaultCreateProject();
+                                setShowAddProjectFrom(true);
                             }}
                         >
                             <div>
@@ -321,12 +322,19 @@ export default function Dashboard() {
                     projectsListData.map((project, index) => {
                         console.log("Project is active", project.is_active);
                         return (
-                            <div className="project-box">
+                            <div
+                                className="project-box"
+                                style={{
+                                    backgroundColor: project.is_active === false ? "#9da2b3" : "",
+                                    borderColor: project.is_active === false ? "#9da2b3" : "",
+                                }}
+                            >
                                 <div
                                     className="project-info-box"
                                     style={{
                                         backgroundColor:
                                             project.is_active === false ? "#9da2b3" : "",
+                                        borderColor: project.is_active === false ? "#9da2b3" : "",
                                     }}
                                 >
                                     <div onClick={() => navigateNotes(project.id)}>
@@ -397,7 +405,14 @@ export default function Dashboard() {
                                     className="project-description-box"
                                 >
                                     <div>
-                                        <p>{project.description}</p>
+                                        <p
+                                            style={{
+                                                color:
+                                                    project.is_active === false ? "#9da2b3" : "",
+                                            }}
+                                        >
+                                            {project.description}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
