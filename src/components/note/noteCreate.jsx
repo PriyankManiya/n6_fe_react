@@ -8,7 +8,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import { notify, ToastType } from "../utils";
 
-import "./create.css";
+import "../../css/noteCreate.css";
 
 import n6Logo from "../../assets/svg/Common/Logo.svg";
 import userIcon from "../../assets/svg/Common/userIcon.svg";

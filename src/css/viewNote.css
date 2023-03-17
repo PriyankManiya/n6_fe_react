@@ -1,0 +1,411 @@
+.primary-note-container {
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.primary-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 86%;
+    border: 1px solid black;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #f5f5f5;
+}
+
+.primary-note-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid black;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+    .primary-note-title-container > p {
+        font-size: 20px;
+        font-weight: 500;
+        margin: 7px;
+    }
+
+.primary-note-content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.primary-note-info-and-options-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 40px;
+    border-top: 1px solid black;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.primary-note-author-info-container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.primary-note-author-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+    .primary-note-author-name > p {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+.primary-note-timestamp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+    .primary-note-timestamp > p {
+        font-size: 12px;
+    }
+
+.primary-note-read-status-container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+    .primary-note-read-status-container > p {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+.primary-note-options-container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.primary-note-edit-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.primary-note-edit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e3a8a;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 70px;
+    height: 29px;
+}
+
+    .primary-note-edit-button > div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 5px;
+    }
+
+        .primary-note-edit-button > div:first-child > img {
+            width: 16px;
+        }
+
+    .primary-note-edit-button > div:nth-child(2) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .primary-note-edit-button > div:nth-child(2) > p {
+            color: white;
+        }
+
+.primary-note-respond-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.primary-note-respond-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e3a8a;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100px;
+    height: 29px;
+}
+
+    .primary-note-respond-button > div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 2px;
+    }
+
+        .primary-note-respond-button > div:first-child > img {
+            width: 17px;
+        }
+
+    .primary-note-respond-button > div:nth-child(2) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .primary-note-respond-button > div:nth-child(2) > p {
+            color: white;
+        }
+
+.respond-note-container {
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.respond-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #f5f5f5;
+}
+
+.respond-note-content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.respond-note-info-and-options-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 40px;
+    border-top: 1px solid black;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.respond-note-author-info-container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.respond-note-author-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+    .respond-note-author-name > p {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+.respond-note-timestamp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+    .respond-note-timestamp > p {
+        font-size: 12px;
+    }
+
+.respond-note-read-status-container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+    .respond-note-read-status-container > p {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+.respond-note-options-container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.respond-note-edit-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.respond-note-edit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e3a8a;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 70px;
+    height: 29px;
+}
+
+    .respond-note-edit-button > div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 5px;
+    }
+
+        .respond-note-edit-button > div:first-child > img {
+            width: 16px;
+        }
+
+    .respond-note-edit-button > div:nth-child(2) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .respond-note-edit-button > div:nth-child(2) > p {
+            color: white;
+        }
+
+.bottom-spacer {
+    margin: 40px;
+}
+
+.note-buttons-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #c8cbce;
+    background-color: white;
+}
+
+    .note-buttons-bar > div:first-child {
+        width: 86%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+.note-save-button {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e3a8a;
+    border-radius: 20px;
+}
+
+    .note-save-button > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .note-save-button > div:first-child {
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+            .note-save-button > div:first-child > img {
+                width: 18px;
+            }
+
+        .note-save-button > div:nth-child(2) > p {
+            color: white;
+        }
+
+.note-cancel-button {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #b11b1b;
+    border-radius: 20px;
+    padding-right: 5px;
+}
+
+    .note-cancel-button > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .note-cancel-button > div:first-child {
+            margin-right: 1px;
+        }
+
+            .note-cancel-button > div:first-child > img {
+                width: 25px;
+            }
+
+        .note-cancel-button > div:nth-child(2) > p {
+            color: white;
+        }
