@@ -254,7 +254,7 @@ export default function Dashboard() {
                     </div>
                     <div
                         className="general-top-bar-username-box"
-                        title="{userData.user_name}"
+                        title={userData.user_name}
                     >
                         <div>
                             <img src={userIcon} alt="User Icon" />
