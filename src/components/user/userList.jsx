@@ -15,7 +15,7 @@ import CreateUserModel from "./createUserModel";
 import n6Logo from "../../assets/svg/Common/Logo.svg";
 import userIcon from "../../assets/svg/Common/userIcon.svg";
 import logoutIcon from "../../assets/svg/Common/logoutIcon.svg";
-import projectIcon from "../../assets/svg/Common/projectIcon.svg";
+import addItemIcon from "../../assets/svg/Common/addItemIcon.svg";
 
 export default function UserList() {
     const dispatch = useDispatch();
@@ -194,7 +194,7 @@ export default function UserList() {
                         onClick={() => setCompanyModalOpen(true)}
                     >
                         <div>
-                            <img src={projectIcon} alt="Project Icon" />
+                            <img src={addItemIcon} alt="Add User Icon" />
                         </div>
                         <div>
                             <p>Add User</p>
