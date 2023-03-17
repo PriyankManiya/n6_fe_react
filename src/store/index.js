@@ -74,6 +74,7 @@ const notesSlice = createSlice({
   name: "notesSlice",
   initialState: {
     notes_list: [],
+    note: {},
   },
   reducers: {
     setNotesData: (state, action) => {
@@ -81,6 +82,9 @@ const notesSlice = createSlice({
       action.payload.map((note) => {
         state.notes_list.push(note);
       });
+    },
+    setNoteData: (state, action) => {
+      state.note = action.payload;
     },
   },
 });
