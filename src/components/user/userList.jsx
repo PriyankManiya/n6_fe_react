@@ -230,7 +230,7 @@ export default function UserList() {
                     usersListData.map((user, index) => {
                         return (
                             <div className="user-box">
-                                <div title="1">
+                                <div title={user.user.first_name + ' ' +user.user.last_name}>
                                     <div>
                                         <p>{index + 1}.</p>
                                     </div>

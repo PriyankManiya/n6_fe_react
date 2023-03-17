@@ -40,6 +40,7 @@ export default function ViewNote() {
     const setNoteData = (data) => dispatch(actions.setNoteData(data));
 
     const getRespondedNote = (id) => {
+        console.log('Called -- ');
         if (id) {
             try {
                 // Get Responded Note data
@@ -75,134 +76,134 @@ export default function ViewNote() {
     }, []);
 
     return (
-        <>
-            <NoteHeader />
-            <ViewNoteBreadCrumbs noteName={noteData["original_note"]["topic"]} />
+        <> {noteData  != null ? <> <NoteHeader />
+        <ViewNoteBreadCrumbs noteName={noteData["original_note"]["topic"]} />
 
-            <div className="primary-note-container">
-                <div className="primary-note">
-                    <div className="primary-note-title-container">
-                        <p>{noteData["original_note"]["topic"]}</p>
-                    </div>
-                    <div className="primary-note-content-container">
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: noteData["original_note"]["content_html"],
-                            }}
-                        ></div>
-                    </div>
-                    <div className="primary-note-info-and-options-container">
-                        <div className="primary-note-author-info-container">
-                            <div className="primary-note-author-name">
-                                <p>
-                                    {noteData["original_note"]["user"]["first_name"]}{" "}
-                                    {noteData["original_note"]["user"]["last_name"]}
-                                </p>
-                            </div>
-                            <div className="primary-note-timestamp">
-                                <p>{formateTIme(noteData["original_note"]["created_at"])}</p>
-                            </div>
-                        </div>
-                        <div className="primary-note-read-status-container">
+        <div className="primary-note-container">
+            <div className="primary-note">
+                <div className="primary-note-title-container">
+                    <p>{noteData["original_note"]["topic"]}</p>
+                </div>
+                <div className="primary-note-content-container">
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: noteData["original_note"]["content_html"],
+                        }}
+                    ></div>
+                </div>
+                <div className="primary-note-info-and-options-container">
+                    <div className="primary-note-author-info-container">
+                        <div className="primary-note-author-name">
                             <p>
-                                {noteData["original_note"]["read_tf"] === true
-                                    ? "Read"
-                                    : "Unread"}
+                                {noteData["original_note"]["user"]["first_name"]}{" "}
+                                {noteData["original_note"]["user"]["last_name"]}
                             </p>
                         </div>
-                        <div className="primary-note-options-container">
-                            <div className="primary-note-edit-button-container">
-                                <div className="primary-note-edit-button">
-                                    <div>
-                                        <img src={editNoteIcon} alt="Edit Note Icon" />
-                                    </div>
-                                    <div>
-                                        <p>Edit</p>
-                                    </div>
+                        <div className="primary-note-timestamp">
+                            <p>{formateTIme(noteData["original_note"]["created_at"])}</p>
+                        </div>
+                    </div>
+                    <div className="primary-note-read-status-container">
+                        <p>
+                            {noteData["original_note"]["read_tf"] === true
+                                ? "Read"
+                                : "Unread"}
+                        </p>
+                    </div>
+                    <div className="primary-note-options-container">
+                        <div className="primary-note-edit-button-container">
+                            <div className="primary-note-edit-button">
+                                <div>
+                                    <img src={editNoteIcon} alt="Edit Note Icon" />
+                                </div>
+                                <div>
+                                    <p>Edit</p>
                                 </div>
                             </div>
-                            <div className="primary-note-respond-button-container">
-                                <div className="primary-note-respond-button">
-                                    <div>
-                                        <img src={respondIcon} alt="Respond Icon" />
-                                    </div>
-                                    <div>
-                                        <p>Respond</p>
-                                    </div>
+                        </div>
+                        <div className="primary-note-respond-button-container">
+                            <div className="primary-note-respond-button">
+                                <div>
+                                    <img src={respondIcon} alt="Respond Icon" />
+                                </div>
+                                <div>
+                                    <p>Respond</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="primary-note-attachments-container"></div>
             </div>
+            <div className="primary-note-attachments-container"></div>
+        </div>
 
-            <div className="respond-note-container">
-                {noteData["responded_note"].map((item, index) => {
-                    return (
-                        <div className="respond-note">
-                            <div className="respond-note-content-container">
-                                <div
-                                    dangerouslySetInnerHTML={{
-                                        __html: item["content_html"],
-                                    }}
-                                ></div>
+        <div className="respond-note-container">
+            {noteData["responded_note"].map((item, index) => {
+                return (
+                    <div className="respond-note">
+                        <div className="respond-note-content-container">
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: item["content_html"],
+                                }}
+                            ></div>
+                        </div>
+                        <div className="respond-note-info-and-options-container">
+                            <div className="respond-note-author-info-container">
+                                <div className="respond-note-author-name">
+                                    <p>
+                                        {item["user"]["first_name"]} {item["user"]["last_name"]}
+                                    </p>
+                                </div>
+                                <div className="respond-note-timestamp">
+                                    <p>{formateTIme(item["created_at"])}</p>
+                                </div>
                             </div>
-                            <div className="respond-note-info-and-options-container">
-                                <div className="respond-note-author-info-container">
-                                    <div className="respond-note-author-name">
-                                        <p>
-                                            {item["user"]["first_name"]} {item["user"]["last_name"]}
-                                        </p>
-                                    </div>
-                                    <div className="respond-note-timestamp">
-                                        <p>{formateTIme(item["created_at"])}</p>
-                                    </div>
-                                </div>
-                                <div className="respond-note-read-status-container">
-                                    <p>{item["read_tf"] === true ? "Read" : "Unread"}</p>
-                                </div>
-                                <div className="respond-note-options-container">
-                                    <div className="respond-note-edit-button-container">
-                                        <div className="respond-note-edit-button">
-                                            <div>
-                                                <img src={editNoteIcon} alt="Edit Note Icon" />
-                                            </div>
-                                            <div>
-                                                <p>Edit</p>
-                                            </div>
+                            <div className="respond-note-read-status-container">
+                                <p>{item["read_tf"] === true ? "Read" : "Unread"}</p>
+                            </div>
+                            <div className="respond-note-options-container">
+                                <div className="respond-note-edit-button-container">
+                                    <div className="respond-note-edit-button">
+                                        <div>
+                                            <img src={editNoteIcon} alt="Edit Note Icon" />
+                                        </div>
+                                        <div>
+                                            <p>Edit</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    );
-                })}
-                <div className="respond-note-attachments-container"></div>
-            </div>
-
-            <div className="bottom-spacer">&nbsp;</div>
-
-            <div className="note-buttons-bar">
-                <div>
-                    <div className="note-save-button">
-                        <div>
-                            <img src={addItemIcon} alt="Save Note Icon" />
-                        </div>
-                        <div>
-                            <p>Save</p>
-                        </div>
                     </div>
-                    <div className="note-cancel-button">
-                        <div>
-                            <img src={cancelIcon} alt="Cancel Icon" />
-                        </div>
-                        <div>
-                            <p>Cancel</p>
-                        </div>
+                );
+            })}
+            <div className="respond-note-attachments-container"></div>
+        </div>
+
+        <div className="bottom-spacer">&nbsp;</div>
+
+        <div className="note-buttons-bar">
+            <div>
+                <div className="note-save-button">
+                    <div>
+                        <img src={addItemIcon} alt="Save Note Icon" />
+                    </div>
+                    <div>
+                        <p>Save</p>
+                    </div>
+                </div>
+                <div className="note-cancel-button">
+                    <div>
+                        <img src={cancelIcon} alt="Cancel Icon" />
+                    </div>
+                    <div>
+                        <p>Cancel</p>
                     </div>
                 </div>
             </div>
+        </div> </> : <h1>Loading</h1>}
+            
         </>
     );
 }

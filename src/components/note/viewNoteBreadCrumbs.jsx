@@ -55,9 +55,13 @@ export default function ViewNoteBreadCrumbs({ noteName }) {
     <>
       <div className="general-bread-and-btn-bar">
         <div className="breadcrumbs-box">
-          <p>N6 </p> <p onClick={navigateDashboard}> &nbsp; &#62; Dashboard</p>{" "}
-          <p onClick={navigateNote}> &nbsp; &#62; {projectData.name} </p>
-          <p> &nbsp; &#62; {noteName} </p>
+          <p className="breadcrumbs-titles breadcrumbs-titles-links" onClick={navigateDashboard}>N6</p>
+          <p className="breadcrumbs-arrows">&nbsp;&#62;&nbsp;</p>
+          <p className="breadcrumbs-titles breadcrumbs-titles-links" onClick={navigateDashboard}>Dashboard</p>
+          <p className="breadcrumbs-arrows">&nbsp;&#62;&nbsp;</p>
+          <p className="breadcrumbs-titles breadcrumbs-titles-links" onClick={navigateNote}>{projectData.name}</p>
+          <p className="breadcrumbs-arrows">&nbsp;&#62;&nbsp;</p>
+          <p className="breadcrumbs-titles">{noteName}</p>
         </div>
       </div>
     </>
