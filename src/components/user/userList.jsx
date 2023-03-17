@@ -185,7 +185,7 @@ export default function UserList() {
                     <p className="breadcrumbs-arrows">&nbsp;&#62;&nbsp;</p>
                     <p className="breadcrumbs-titles breadcrumbs-titles-links" onClick={navigateDashboard}>Dashboard</p>
                     <p className="breadcrumbs-arrows">&nbsp;&#62;&nbsp;</p>
-                    <p className="breadcrumbs-titles">Dashboard</p>
+                    <p className="breadcrumbs-titles">Manage Users</p>
                 </div>
 
                 <div className="btn-box">
