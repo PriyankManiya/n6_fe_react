@@ -40,11 +40,11 @@ export default function Note() {
     const setUserData = (data) => dispatch(actions.setUserData(data));
     const setNotesData = (data) => dispatch(actions.setNotesData(data));
 
-  const resetStore = () => dispatch(actions.reset());
-  const navigateLogin = () => navigate("/");
-  const navigateDashboard = () => navigate("/dashboard");
-  const navigateViewNote = (id) => navigate("/viewnote/" + id);
-  const navigateNoteCreate = () => navigate("/note-create/");
+    const resetStore = () => dispatch(actions.reset());
+    const navigateLogin = () => navigate("/");
+    const navigateDashboard = () => navigate("/dashboard");
+    const navigateViewNote = (id) => navigate("/viewnote/" + id);
+    const navigateNoteCreate = () => navigate("/note-create/");
 
 
     useEffect(() => {
@@ -211,9 +211,9 @@ export default function Note() {
             <NoteHeader />
             <NoteBreadCrumbs />
 
-            {notesListData.map((note) => {
-                return (
-                    <div className="note-list-box" >
+            <div className="note-list-box" >
+                {notesListData.map((note) => {
+                    return (
                         <div
                             className="note-box"
                             style={{
@@ -223,7 +223,7 @@ export default function Note() {
                         >
                             <div className="note-info-box" onClick={() => navigateViewNote(note.id)}>
                                 <div>
-                                    <img src={noteIcon} alt="Note Icon" width={28}/>
+                                    <img src={noteIcon} alt="Note Icon" width={28} />
                                 </div>
                                 <div>
                                     <p>{note.topic}</p>
@@ -267,10 +267,11 @@ export default function Note() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                );
+                    );
 
-            })}
+                })}
+            </div>
+
             <div className="bottom-spacer">&nbsp;</div>
             <div className="note-buttons-bar">
                 <div>
