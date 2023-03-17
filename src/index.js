@@ -41,7 +41,7 @@ root.render(
             <Route path="/note/:id" element={<Note />} />
             <Route path="/note-create" element={<NoteCreate />} />
             <Route path="/user-list" element={<UserList />} />
-            <Route path="/viewnote" element={<ViewNote />} />
+            <Route path="/viewnote/:id" element={<ViewNote />} />
           </Routes>
         </Router>
       </React.StrictMode>

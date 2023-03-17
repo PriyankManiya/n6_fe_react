@@ -40,15 +40,8 @@ export default function Note() {
   const resetStore = () => dispatch(actions.reset());
   const navigateLogin = () => navigate("/");
   const navigateDashboard = () => navigate("/dashboard");
+  const navigateViewNote = (id) => navigate("/viewnote/" + id);
 
-  /**
-   * The useEffect hook is used to call the getUserInfo and getNotes functions when the component mounts
-   */
-  const logoutUser = () => {
-    setToken("");
-    resetStore();
-    navigateLogin();
-  };
 
   useEffect(() => {
     getUserInfo();
@@ -216,7 +209,7 @@ export default function Note() {
 
       {notesListData.map((note) => {
         return (
-          <div className="note-list-box">
+          <div className="note-list-box" onClick={() => navigateViewNote(note.id)}>
             <div
               className="note-box"
               style={{
