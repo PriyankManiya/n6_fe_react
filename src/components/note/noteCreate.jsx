@@ -197,15 +197,13 @@ export default function NoteCreate() {
                 <div className="breadcrumbs-box">
                     {/* Do not include '>' and spaces for linking to other pages.
                         Only use the words. They are seperated with p tags below. */}
-                    <p>N6</p>
-                    <p>&nbsp;&#62;&nbsp;</p>
-                    <p onClick={navigateDashboard}>Dashboard</p>
-                    <p>&nbsp;&#62;&nbsp;</p>
-                    <p onClick={() => navigateToProject(projectData.id)}>
-                        {projectData.name}
-                    </p>
-                    <p>&nbsp;&#62;&nbsp;</p>
-                    <p>Create Note</p>
+                    <p className="breadcrumbs-titles breadcrumbs-titles-links" onClick={navigateDashboard}>N6</p>
+                    <p className="breadcrumbs-arrows">&nbsp;&#62;&nbsp;</p>
+                    <p className="breadcrumbs-titles breadcrumbs-titles-links" onClick={navigateDashboard}>Dashboard</p>
+                    <p className="breadcrumbs-arrows">&nbsp;&#62;&nbsp;</p>
+                    <p className="breadcrumbs-titles breadcrumbs-titles-links" onClick={() => navigateToProject(projectData.id)}>{projectData.name}</p>
+                    <p className="breadcrumbs-arrows">&nbsp;&#62;&nbsp;</p>
+                    <p className="breadcrumbs-titles">Create Note</p>
                 </div>
             </div>
 
