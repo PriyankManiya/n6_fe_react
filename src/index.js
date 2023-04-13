@@ -15,6 +15,7 @@ import Dashboard from "./components/dashboard/dashboard";
 import Note from "./components/note/note";
 import NoteCreate from "./components/note/noteCreate";
 import UserList from "./components/user/userList";
+import CompanyList from "./components/company/companyList";
 
 import ViewNote from "./components/note/viewNote";
 
@@ -41,6 +42,7 @@ root.render(
             <Route path="/note/:id" element={<Note />} />
             <Route path="/note-create" element={<NoteCreate />} />
             <Route path="/user-list" element={<UserList />} />
+            <Route path="/company-list" element={<CompanyList />} />
             <Route path="/viewnote/:id" element={<ViewNote />} />
           </Routes>
         </Router>

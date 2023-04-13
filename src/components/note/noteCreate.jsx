@@ -129,31 +129,6 @@ export default function NoteCreate() {
         // }
     };
 
-    function ShowTinyEditor() {
-        return (
-            <>
-                <Editor
-                    value={content_html}
-                    className="create-note-editor"
-                    apiKey="bk8m1npjoyflppg2j0luatg8am9fxl65b97tkgewkcgt89d4"
-                    onInit={(evt, editor) => (editorRef.current = editor)}
-                    init={{
-                        height: 500,
-                        resize: false,
-                        menubar: "edit insert format",
-                        plugins: ["lists", "code", "paste code wordcount"],
-                        toolbar:
-                            "undo redo | " +
-                            "bold italic underline backcolor | numlist bullist | alignleft aligncenter " +
-                            "alignright alignjustify | bullist numlist outdent indent | " +
-                            "removeformat",
-                        content_style:
-                            "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-                    }}
-                />
-            </>
-        );
-    }
 
     return (
         <>
@@ -216,7 +191,24 @@ export default function NoteCreate() {
             </div>
 
             <div className="create-note-editor-box">
-                <ShowTinyEditor />
+            <Editor
+                    className="create-note-editor"
+                    apiKey="bk8m1npjoyflppg2j0luatg8am9fxl65b97tkgewkcgt89d4"
+                    onInit={(evt, editor) => (editorRef.current = editor)}
+                    init={{
+                        height: 500,
+                        resize: false,
+                        menubar: "edit insert format",
+                        plugins: ["lists", "code", "paste code wordcount"],
+                        toolbar:
+                            "undo redo | " +
+                            "bold italic underline backcolor | numlist bullist | alignleft aligncenter " +
+                            "alignright alignjustify | bullist numlist outdent indent | " +
+                            "removeformat",
+                        content_style:
+                            "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                    }}
+                />
             </div>
 
             <div className="create-note-attachment-box">

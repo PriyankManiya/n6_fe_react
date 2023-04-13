@@ -53,6 +53,7 @@ export default function Dashboard() {
     const resetStore = () => dispatch(actions.reset());
     const navigateHome = () => navigate("/");
     const navigateUserList = () => navigate("/user-list");
+    const navigateCompanyList = () => navigate("/company-list");
 
     /**
      * It takes the id of the project that was clicked on, and then it loops through the projectsListData
@@ -295,6 +296,14 @@ export default function Dashboard() {
                             </div>
                             <div>
                                 <p>Manage Users</p>
+                            </div>
+                        </div>
+                        <div className="manage-user-button" onClick={navigateCompanyList}>
+                            <div>
+                                <img src={projectIcon} alt="Company Icon" />
+                            </div>
+                            <div>
+                                <p>Manage Company</p>
                             </div>
                         </div>
                         <div
