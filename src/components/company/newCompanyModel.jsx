@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { notify, ToastType } from "../utils";
 
-export default function NewCompanyModel({ setOpenModal, setUserModalOpen }) {
+export default function NewCompanyModel({ setOpenModal, companyDetails }) {
   const dispatch = useDispatch();
 
   const baseUrl = useSelector((state) => state.auth.base_url);
@@ -79,8 +79,42 @@ export default function NewCompanyModel({ setOpenModal, setUserModalOpen }) {
     }
   };
 
-  /* A hook that is called when the component is mounted. */
-  useEffect(() => {}, []);
+  const updateCompany = (info) => {
+    try {
+      axios
+        .put(
+          `${baseUrl}/company/`,
+          {
+            ...info,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + authToken,
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          let data = res.data;
+          if (data.status === 200 || data.status === 201) {
+            getCompanyList();
+            notify(ToastType.SUCCESS, "Company Added Successfully");
+          } else {
+            notify(
+              ToastType.ERROR,
+              data.msg || "Something went wrong. Please try again later."
+            );
+          }
+        });
+    } catch (error) {
+      console.log("error >>>> ", error);
+      notify(ToastType.ERROR, "Something went wrong. Please try again later.");
+    }
+  };
+
+  useEffect(() => {
+    setCompanyInfo(companyDetails);
+  }, []);
 
   return (
     <div className="modalBackground">
@@ -89,18 +123,19 @@ export default function NewCompanyModel({ setOpenModal, setUserModalOpen }) {
           <h1>Create Company</h1>
         </div>
         <div className="add-company-form-new-name">
-                <label for="new-company-name">
-                  Company Name<sup>*</sup>
-                </label>
-                <input
-                  type="text"
-                  id="new-company-name"
-                  name="new-company-name"
-                  onChange={(e) =>
-                    setCompanyInfo({ ...companyInfo, name: e.target.value })
-                  }
-                />
-              </div>
+          <label for="new-company-name">
+            Company Name<sup>*</sup>
+          </label>
+          <input
+            type="text"
+            id="new-company-name"
+            name="new-company-name"
+            value={companyInfo.name}
+            onChange={(e) =>
+              setCompanyInfo({ ...companyInfo, name: e.target.value })
+            }
+          />
+        </div>
         <div>
           <div style={{ marginTop: "10px", marginBottom: "10px" }}>Email*</div>
           <input
@@ -108,12 +143,13 @@ export default function NewCompanyModel({ setOpenModal, setUserModalOpen }) {
             type="email"
             className="login-input"
             placeholder="Email"
+            value={companyInfo.email_address}
             onChange={(e) =>
-                    setCompanyInfo({
-                      ...companyInfo,
-                      email_address: e.target.value,
-                    })
-                  }
+              setCompanyInfo({
+                ...companyInfo,
+                email_address: e.target.value,
+              })
+            }
           />
         </div>
         <div>
@@ -125,23 +161,28 @@ export default function NewCompanyModel({ setOpenModal, setUserModalOpen }) {
             type="number"
             className="login-input"
             placeholder="Mobile Number"
+            value={companyInfo.mobile_num}
             onChange={(e) =>
-                    setCompanyInfo({
-                      ...companyInfo,
-                      mobile_num: e.target.value,
-                    })
-                  }
+              setCompanyInfo({
+                ...companyInfo,
+                mobile_num: e.target.value,
+              })
+            }
           />
         </div>
         <div className="footer">
           <button
             onClick={() => {
-              addCompany(companyInfo);
+              // eslint-disable-next-line no-lone-blocks
+              {
+                companyDetails.id
+                  ? updateCompany(companyInfo)
+                  : addCompany(companyInfo);
+              }
               setOpenModal(false);
-              setUserModalOpen(true);
             }}
           >
-            Next
+            {companyDetails.id ? "Update" : "Create"}
           </button>
           <button
             onClick={() => {

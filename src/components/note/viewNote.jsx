@@ -24,7 +24,13 @@ export default function ViewNote() {
   const authToken = useSelector((state) => state.auth.token);
   const noteData = useSelector((state) => state.notes.note);
 
-  const [isLoading, _setIsLoading] = useState(true)
+  const [isLoading, _setIsLoading] = useState(true);
+
+  const mediaUrl = baseUrl.split("/api")[0];
+
+  const navigateNoteCreateRespond = () =>
+    navigate(`/note-create/${id}/Respond`);
+  const navigateNoteCreateEdit = () => navigate(`/note-create/${id}/Edit`);
 
   const formateTIme = (dateString) => {
     const dateObj = new Date(dateString);
@@ -62,7 +68,7 @@ export default function ViewNote() {
             if (data.status === 200) {
               setNoteData(data.data);
               console.log("DATA GET......");
-              _setIsLoading(false)
+              _setIsLoading(false);
             }
           });
       } catch (error) {
@@ -126,7 +132,10 @@ export default function ViewNote() {
                   </p>
                 </div>
                 <div className="primary-note-options-container">
-                  <div className="primary-note-edit-button-container">
+                  <div
+                    className="primary-note-edit-button-container"
+                    onClick={() => navigateNoteCreateEdit()}
+                  >
                     <div className="primary-note-edit-button">
                       <div>
                         <img src={editNoteIcon} alt="Edit Note Icon" />
@@ -136,7 +145,10 @@ export default function ViewNote() {
                       </div>
                     </div>
                   </div>
-                  <div className="primary-note-respond-button-container">
+                  <div
+                    className="primary-note-respond-button-container"
+                    onClick={() => navigateNoteCreateRespond()}
+                  >
                     <div className="primary-note-respond-button">
                       <div>
                         <img src={respondIcon} alt="Respond Icon" />
@@ -149,48 +161,91 @@ export default function ViewNote() {
                 </div>
               </div>
             </div>
-            <div className="primary-note-attachments-container"></div>
+              <div className="attachment-block">
+                <ul className="attachmentUl">
+                  {noteData &&
+                    noteData["original_note"] &&
+                    noteData["original_note"]["attachments"].map(
+                      (item, index) => {
+                        return (
+                          <li className="attachmentLi">
+                            <a
+                              className="attachmentA"
+                              href={mediaUrl + item["path"]}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {item["filename"]}
+                            </a>
+                          </li>
+                        );
+                      }
+                    )}
+                </ul>
+            </div>
           </div>
           <div className="respond-note-container">
             {noteData["responded_note"].map((item, index) => {
+              console.log("item ??", item["attachments"]);
               return (
-                <div className="respond-note">
-                  <div className="respond-note-content-container">
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: item["content_html"],
-                      }}
-                    ></div>
-                  </div>
-                  <div className="respond-note-info-and-options-container">
-                    <div className="respond-note-author-info-container">
-                      <div className="respond-note-author-name">
-                        <p>
-                          {item["user"]["first_name"]}{" "}
-                          {item["user"]["last_name"]}
-                        </p>
-                      </div>
-                      <div className="respond-note-timestamp">
-                        <p>{formateTIme(item["created_at"])}</p>
-                      </div>
+                <>
+                  <div className="respond-note">
+                    <div className="respond-note-content-container">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: item["content_html"],
+                        }}
+                      ></div>
                     </div>
-                    <div className="respond-note-read-status-container">
-                      <p>{item["read_tf"] === true ? "Read" : "Unread"}</p>
-                    </div>
-                    <div className="respond-note-options-container">
-                      <div className="respond-note-edit-button-container">
-                        <div className="respond-note-edit-button">
-                          <div>
-                            <img src={editNoteIcon} alt="Edit Note Icon" />
-                          </div>
-                          <div>
-                            <p>Edit</p>
+                    <div className="respond-note-info-and-options-container">
+                      <div className="respond-note-author-info-container">
+                        <div className="respond-note-author-name">
+                          <p>
+                            {item["user"]["first_name"]}{" "}
+                            {item["user"]["last_name"]}
+                          </p>
+                        </div>
+                        <div className="respond-note-timestamp">
+                          <p>{formateTIme(item["created_at"])}</p>
+                        </div>
+                      </div>
+                      <div className="respond-note-read-status-container">
+                        <p>{item["read_tf"] === true ? "Read" : "Unread"}</p>
+                      </div>
+                      <div className="respond-note-options-container">
+                        <div className="respond-note-edit-button-container">
+                          <div className="respond-note-edit-button">
+                            <div>
+                              <img src={editNoteIcon} alt="Edit Note Icon" />
+                            </div>
+                            <div>
+                              <p>Edit</p>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <div></div>
                     </div>
                   </div>
-                </div>
+                  <div className="attachment-block">
+                    <ul className="attachmentUl">
+                      {item["attachments"].map((item, index) => {
+                        return (
+                          <li className="attachmentLi">
+                            <a
+                              className="attachmentA"
+                              href={mediaUrl + item["path"]}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {item["filename"]}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </>
               );
             })}
             <div className="respond-note-attachments-container"></div>

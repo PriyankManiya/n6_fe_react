@@ -40,7 +40,7 @@ root.render(
             />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/note/:id" element={<Note />} />
-            <Route path="/note-create" element={<NoteCreate />} />
+            <Route path="/note-create/:noteId?/:slug?" element={<NoteCreate />} />
             <Route path="/user-list" element={<UserList />} />
             <Route path="/company-list" element={<CompanyList />} />
             <Route path="/viewnote/:id" element={<ViewNote />} />
