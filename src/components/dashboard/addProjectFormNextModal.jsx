@@ -107,7 +107,7 @@ export default function AddProjectFormNext({
     try {
       // Get projects data
       axios
-        .get(`${baseUrl}/project/list/`, {
+        .get(`${baseUrl}/userProjectAccess/list/`, {
           headers: {
             Authorization: "Bearer " + authToken,
             "Content-Type": "application/json",

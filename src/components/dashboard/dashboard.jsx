@@ -62,8 +62,8 @@ export default function Dashboard() {
      */
     const navigateNotes = (id) => {
         for (let i = 0; i < projectsListData.length; i++) {
-            if (projectsListData[i].id === id) {
-                setProjectData(projectsListData[i]);
+            if (projectsListData[i].project.id === id) {
+                setProjectData(projectsListData[i].project);
                 break;
             }
         }
@@ -111,7 +111,7 @@ export default function Dashboard() {
     const getProjects = () => {
         try {
             axios
-                .get(`${baseUrl}/project/list/`, {
+                .get(`${baseUrl}/userProjectAccess/list/`, {
                     headers: {
                         Authorization: "Bearer " + authToken,
                         "Content-Type": "application/json",
@@ -329,7 +329,7 @@ export default function Dashboard() {
                     <div> Fetching Data ..... </div>
                 ) : (
                     projectsListData.map((project, index) => {
-                        console.log("Project is active", project.is_active);
+                        project = project.project;
                         return (
                             <div
                                 className="project-box"
