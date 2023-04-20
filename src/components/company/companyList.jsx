@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 import { notify, ToastType } from "../utils";
 
-import NewCompanyModel from "./newCompanyModel";
+import NewCompanyModal from "./newCompanyModal";
 
 import n6Logo from "../../assets/svg/Common/Logo.svg";
 import userIcon from "../../assets/svg/Common/userIcon.svg";
@@ -143,7 +143,7 @@ export default function CompanyList() {
   return (
     <>
       {companModalOpen && (
-        <NewCompanyModel
+        <NewCompanyModal
           setOpenModal={setCompanyModalOpen}
           companyDetails={companyDetails}
         />

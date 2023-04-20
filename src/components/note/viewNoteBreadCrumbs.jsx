@@ -7,6 +7,8 @@ import { actions } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import fileIcon from "../../assets/svg/Common/file.png";
+
 import { notify, ToastType } from "../utils";
 
 export default function ViewNoteBreadCrumbs({ noteName }) {
@@ -63,6 +65,14 @@ export default function ViewNoteBreadCrumbs({ noteName }) {
           <p className="breadcrumbs-arrows">&nbsp;&#62;&nbsp;</p>
           <p className="breadcrumbs-titles">{noteName}</p>
         </div>
+         <a className="manage-user-button" href="../../PDF/note_export.pdf" target="_blank" >
+              <div>
+                <img src={fileIcon} alt="User Icon" />
+              </div>
+              <div>
+                <p>Export to PDF</p>
+              </div>
+            </a>
       </div>
     </>
   );

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 import { notify, ToastType } from "../utils";
 
-export default function CreateCompanyModel({ setOpenModal, setUserModalOpen }) {
+export default function CreateCompanyModal({ setOpenModal, setUserModalOpen }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

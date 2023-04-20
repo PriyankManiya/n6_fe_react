@@ -33,40 +33,11 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
   const rolesListData = useSelector((state) => state.user.userRoleslist);
   const createUserVal = useSelector((state) => state.user.createUser);
 
-  const setUserRoleListData = (data) =>
-    dispatch(actions.setUserRoleListData(data));
 
   const setCreateUser = (data) => dispatch(actions.setCreateUser(data));
   const setDefaultCreateUser = () => dispatch(actions.setDefaultCreateUser());
 
-/**
- * It fetches the user roles list from the backend and sets the state of the user role list data
- */
-  const getUserRolesList = () => {
-    try {
-      axios
-        .get(`${baseUrl}/user/roles/`, {
-          headers: {
-            Authorization: "Bearer " + authToken,
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          let data = res.data;
-          if (data.status === 200) {
-            setUserRoleListData(data.data);
-          } else {
-            notify(
-              ToastType.ERROR,
-              "Something went wrong. Please try again later."
-            );
-          }
-        });
-    } catch (error) {
-      console.log("error >>>> ", error);
-      notify(ToastType.ERROR, "Something went wrong. Please try again later.");
-    }
-  };
+
 
   /**
    * It takes a userId as an argument and then makes an axios post request to the backend with the
@@ -143,7 +114,6 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
   
   /* Fetching the user roles list from the backend and setting the state of the user role list data */
   useEffect(() => {
-    getUserRolesList();
     setRoles([]);
     rolesListData &&
       rolesListData.map((item) => {
@@ -221,6 +191,7 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
         </div>
         <div>
           <div>Role*</div>
+          {rolesListData && rolesListData.length > 0 &&
           <Dropdown
             options={roles}
             onChange={(e) => {
@@ -230,6 +201,7 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
             value={selectedRole}
             placeholder="Select an option"
           />
+          }
         </div>
         <div>
           <div>Username*</div>

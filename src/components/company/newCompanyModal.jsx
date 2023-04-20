@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { notify, ToastType } from "../utils";
 
-export default function NewCompanyModel({ setOpenModal, companyDetails }) {
+export default function NewCompanyModal({ setOpenModal, companyDetails }) {
   const dispatch = useDispatch();
 
   const baseUrl = useSelector((state) => state.auth.base_url);

@@ -107,7 +107,7 @@ export default function NoteHeader() {
           </div>
         </div>
       </div>
-
+     
     </>
   );
 }

@@ -41,16 +41,17 @@ export default function AddProjectForm({
   const findselectedCompany = () => {
     projectId !== 0 &&
       projectsListData.filter((item) => {
-        if (item.id === projectId) {
+        let project = item.project;
+        if (project.id === projectId) {
           setSelectedCompany({
-            value: item.company.id,
-            label: item.company.name,
+            value: project.company.id,
+            label: project.company.name,
           });
           setCreateProject({
-            id: item.id,
-            company: item.company.id,
-            name: item.name,
-            description: item.description,
+            id: project.id,
+            company: project.company.id,  
+            name: project.name,
+            description: project.description,
           });
         }
       });
