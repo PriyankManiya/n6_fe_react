@@ -104,7 +104,7 @@ export default function UserList() {
         .then((res) => {
           let data = res.data;
           if (data.status === 200) {
-            notify(ToastType.SUCCESS, "User status updated successfully.");
+            notify(ToastType.SUCCESS, "Status updated successfully.");
             getUserList();
           }
         });
@@ -303,8 +303,7 @@ export default function UserList() {
                         <p>{user.user.company.name}</p>
                       </div>
                       <div>
-                        {/* <p>{user.user_level.role}</p> */}
-                        <p>{user.id}</p>
+                        <p>{user.user_level.role}</p>
                       </div>
                     </div>
                     <div>

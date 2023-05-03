@@ -12,12 +12,12 @@ import { useNavigate } from "react-router-dom";
 
 import { notify, ToastType } from "../utils";
 
-export default function CreateUserModel({ setOpenModal, getUserList  }) {
+export default function CreateUserModel({ setOpenModal, getUserList }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [roles, setRoles] = useState([]);
-  const [selectedRole, setSelectedRole] = useState("Select an option");
+  const [selectedRole, setSelectedRole] = useState("Select User Role");
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -33,19 +33,14 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
   const rolesListData = useSelector((state) => state.user.userRoleslist);
   const createUserVal = useSelector((state) => state.user.createUser);
 
-
   const setCreateUser = (data) => dispatch(actions.setCreateUser(data));
   const setDefaultCreateUser = () => dispatch(actions.setDefaultCreateUser());
-
-
 
   /**
    * It takes a userId as an argument and then makes an axios post request to the backend with the
    * userId and some other data
    */
   const createCred = (userId) => {
-
-
     console.log("userId >>>> ", userId);
     let userReq = { user: userId, ...createUserVal };
     delete userReq.first_name;
@@ -54,10 +49,9 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
     delete userReq.mobile_number;
     delete userReq.company;
 
-    
     axios
       .post(`${baseUrl}/cred/register/`, {
-        ...userReq
+        ...userReq,
       })
       .then((res) => {
         let data = res.data;
@@ -111,7 +105,7 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
       notify(ToastType.ERROR, "Something went wrong. Please try again later.");
     }
   };
-  
+
   /* Fetching the user roles list from the backend and setting the state of the user role list data */
   useEffect(() => {
     setRoles([]);
@@ -133,7 +127,8 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
         <p>Please enter the information for the user below</p>
 
         <div>
-          <div>First Name*</div>
+        <div style={{marginTop:"15px"}}></div>
+          {/* <div>First Name*</div> */}
           <input
             style={{ marginBottom: "0px" }}
             type="text"
@@ -148,7 +143,8 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
         </div>
 
         <div>
-          <div>Last Name*</div>
+          {/* <div>Last Name*</div> */}
+          <div style={{marginTop:"15px"}}></div>
           <input
             style={{ marginBottom: "0px" }}
             type="text"
@@ -162,7 +158,8 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
           />
         </div>
         <div>
-          <div>Email Address*</div>
+          {/* <div>Email Address*</div> */}
+          <div style={{marginTop:"15px"}}></div>
           <input
             style={{ marginBottom: "0px" }}
             type="email"
@@ -176,7 +173,8 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
           />
         </div>
         <div>
-          <div>Mobile Number*</div>
+          {/* <div>Mobile Number*</div> */}
+          <div style={{marginTop:"15px"}}></div>
           <input
             style={{ marginBottom: "0px" }}
             type="number"
@@ -190,21 +188,23 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
           />
         </div>
         <div>
-          <div>Role*</div>
-          {rolesListData && rolesListData.length > 0 &&
-          <Dropdown
-            options={roles}
-            onChange={(e) => {
-              setSelectedRole(e.value);
-              setCreateUser({ user_level: e.value });
-            }}
-            value={selectedRole}
-            placeholder="Select an option"
-          />
-          }
+        <div style={{marginTop:"15px"}}></div>
+          {/* <div>Role*</div> */}
+          {rolesListData && rolesListData.length > 0 && (
+            <Dropdown
+              options={roles}
+              onChange={(e) => {
+                setSelectedRole(e.value);
+                setCreateUser({ user_level: e.value });
+              }}
+              value={selectedRole}
+              placeholder="Select User Role"
+            />
+          )}
         </div>
         <div>
-          <div>Username*</div>
+          {/* <div>Username*</div> */}
+          <div style={{marginTop:"15px"}}></div>
           <input
             style={{ marginBottom: "0px" }}
             type="text"
@@ -218,7 +218,8 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
           />
         </div>
         <div>
-          <div>Password*</div>
+          {/* <div>Password*</div> */}
+          <div style={{marginTop:"15px"}}></div>
           <input
             style={{ marginBottom: "0px" }}
             type="password"
@@ -232,7 +233,8 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
           />
         </div>
         <div>
-          <div>Confirm Password*</div>
+          {/* <div>Confirm Password*</div> */}
+          <div style={{marginTop:"15px"}}></div>
           <input
             style={{ marginBottom: "0px" }}
             type="password"
@@ -246,22 +248,23 @@ export default function CreateUserModel({ setOpenModal, getUserList  }) {
           />
         </div>
         <div className="footer">
-          <button
-            onClick={() => {
-              createUser();
-              setOpenModal(false);
-            }}
-          >
-            Create
-          </button>
-          <button
-            onClick={() => {
-              setOpenModal(false);
-            }}
-            id="cancelBtn"
-          >
-            Cancel
-          </button>
+          <div className="add-company-form-box-buttons">
+            <div
+              onClick={() => {
+                createUser();
+                setOpenModal(false);
+              }}
+            >
+              <p>Create</p>
+            </div>
+            <div
+              onClick={() => {
+                setOpenModal(false);
+              }}
+            >
+              <p>Cancel</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

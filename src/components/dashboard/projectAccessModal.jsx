@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { notify, ToastType } from "../utils";
 
 import updateAccess from "../../assets/svg/Common/update-access.svg";
-import StratusUser from "./stratusUser"
+import StratusUser from "./stratusUser";
 
 export default function ProjectAccessModal({ setOpenModal }) {
   const dispatch = useDispatch();
@@ -177,30 +177,38 @@ export default function ProjectAccessModal({ setOpenModal }) {
           <div style={{ paddingTop: "15px" }}></div>
           <StratusUser name="Bonnie Lopez" email="bonnielopez@gmail.com" />
           <div style={{ paddingTop: "15px" }}></div>
-          <StratusUser name="Timothy Graham" email="timothygraham@gmail.com" withLink={true} link="https://n6.com/?id=91asd....." />
+          <StratusUser
+            name="Timothy Graham"
+            email="timothygraham@gmail.com"
+            withLink={true}
+            link="https://n6.com/?id=91asd....."
+          />
           <div style={{ paddingTop: "15px" }}></div>
-          <StratusUser name="Tyson Masha" email="tysonmasha@gmail.com" withLink={true} link="https://n6.com/?id=axsxd....." />
+          <StratusUser
+            name="Tyson Masha"
+            email="tysonmasha@gmail.com"
+            withLink={true}
+            link="https://n6.com/?id=axsxd....."
+          />
         </div>
 
         <div className="footer">
-          <button
-            onClick={() => {
-              // eslint-disable-next-line no-lone-blocks
-              {
-              }
-              setOpenModal(false);
-            }}
-          >
-            {"Update"}
-          </button>
-          <button
-            onClick={() => {
-              setOpenModal(false);
-            }}
-            id="cancelBtn"
-          >
-            Cancel
-          </button>
+          <div className="add-company-form-box-buttons">
+            <div
+              onClick={() => {
+                setOpenModal(false);
+              }}
+            >
+              <p>Update</p>
+            </div>
+            <div
+              onClick={() => {
+                setOpenModal(false);
+              }}
+            >
+              <p>Cancel</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

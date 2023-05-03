@@ -432,9 +432,11 @@
 .attachmentA {
   display: block;
   padding: 5px;
-  background-color: #e0e0e0;
   color: #333;
   text-decoration: none;
+  max-width: 170px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
 }
 
 .attachment-block{

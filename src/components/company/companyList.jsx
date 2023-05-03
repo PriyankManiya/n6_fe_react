@@ -101,7 +101,7 @@ export default function CompanyList() {
         .then((res) => {
           let data = res.data;
           if (data.status === 200) {
-            notify(ToastType.SUCCESS, "Company status updated successfully.");
+            notify(ToastType.SUCCESS, "Status updated successfully.");
             getCompanyList();
           }
         });

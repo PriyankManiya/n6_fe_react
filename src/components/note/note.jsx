@@ -128,6 +128,7 @@ export default function Note() {
                     let data = res.data;
                     if (data.status === 200) {
                         getNotes(id);
+                        notify(ToastType.SUCCESS, "Status changed successfully.");
                     }
                 });
         } catch (error) {
@@ -156,6 +157,7 @@ export default function Note() {
                     let data = res.data;
                     if (data.status === 200) {
                         getNotes(id);
+                        notify(ToastType.SUCCESS, "Status changed successfully.");
                     }
                 });
         } catch (error) {
@@ -178,8 +180,29 @@ export default function Note() {
                     <div className="body">
                         <p>Are You Sure You Want to Continue?</p>
                     </div>
-                    <div className="footer">
-                        <button
+                    <div className="footer" style={{marginTop:"20px"}}>
+                    <div className="add-company-form-box-buttons">
+            <div
+              onClick={() => {
+                                selectedNoteStatus === true
+                                    ? disableNote(selectedNoteId)
+                                    : enableNote(selectedNoteId);
+
+                                setOpenModal(false);
+                            }}
+            >
+              <p>Yes</p>
+            </div>
+            <div
+              onClick={() => {
+                setOpenModal(false);
+              }}
+            >
+              <p>Cancel</p>
+            </div>
+          </div>
+
+                        {/* <button
                             onClick={() => {
                                 selectedNoteStatus === true
                                     ? disableNote(selectedNoteId)
@@ -197,7 +220,7 @@ export default function Note() {
                             id="cancelBtn"
                         >
                             Cancel
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>

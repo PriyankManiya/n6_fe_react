@@ -127,25 +127,23 @@ export default function CreateCompanyModal({ setOpenModal, setUserModalOpen }) {
           />
         </div>
         <div className="footer">
-          <button
-            onClick={() => {
-              // selectedNoteStatus === true
-              //   ? disableNote(selectedNoteId)
-              //   : enableNote(selectedNoteId);
+        <div className="add-company-form-box-buttons">
+            <div
+              onClick={() => {
               setOpenModal(false);
               setUserModalOpen(true);
             }}
-          >
-            Next
-          </button>
-          <button
-            onClick={() => {
+            >
+              <p>Next</p>
+            </div>
+            <div
+              onClick={() => {
               setOpenModal(false);
             }}
-            id="cancelBtn"
-          >
-            Cancel
-          </button>
+            >
+              <p>Cancel</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

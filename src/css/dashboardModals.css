@@ -182,6 +182,7 @@
         padding: 6px 15px 6px 15px;
         background-color: #1E3A8A;
         border-radius: 15px;
+        cursor: pointer;
     }
 
         .add-company-form-box-buttons > div:first-child > p {
@@ -197,6 +198,7 @@
         padding: 6px 15px 6px 15px;
         background-color: #B11B1B;
         border-radius: 15px;
+        cursor: pointer;
     }
 
         .add-company-form-box-buttons > div:nth-child(2) > p {

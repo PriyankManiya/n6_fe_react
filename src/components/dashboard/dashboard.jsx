@@ -205,27 +205,39 @@ export default function Dashboard() {
       <div className="modalBackground">
         <div className="modalContainer">
           <div className="title"></div>
-          <div className="body">
-            <p>Are You Sure You Want to Continue?</p>
+          <div className="">
+            <h2 style={{fontWeight:"normal"}}>Are You Sure You Want to Continue?</h2>
           </div>
-          <div className="footer">
-            <button
+          <div className="footer" style={{marginTop:"20px"}}>
+          <div className="add-company-form-box-buttons">
+            <div
               onClick={() => {
                 UpdateProjectStatus(selectedProjectId, !selectedProjectStatus);
 
                 setOpenModal(false);
               }}
             >
-              Yes
-            </button>
-            <button
+              <p>Yes</p>
+            </div>
+            <div
               onClick={() => {
                 setOpenModal(false);
               }}
+            >
+              <p>Cancel</p>
+            </div>
+          </div>
+            {/* <button
+              
+            >
+              Yes
+            </button>
+            <button
+              
               id="cancelBtn"
             >
               Cancel
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

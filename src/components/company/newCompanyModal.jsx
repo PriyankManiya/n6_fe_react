@@ -171,7 +171,30 @@ export default function NewCompanyModal({ setOpenModal, companyDetails }) {
           />
         </div>
         <div className="footer">
-          <button
+        <div className="add-company-form-box-buttons">
+            <div
+              onClick={() => {
+              // eslint-disable-next-line no-lone-blocks
+              {
+                companyDetails.id
+                  ? updateCompany(companyInfo)
+                  : addCompany(companyInfo);
+              }
+              setOpenModal(false);
+            }}
+            >
+              <p>{companyDetails.id ? "Update" : "Create"}</p>
+            </div>
+            <div
+              onClick={() => {
+              setOpenModal(false);
+            }}
+            >
+              <p>Cancel</p>
+            </div>
+          </div>
+
+          {/* <button
             onClick={() => {
               // eslint-disable-next-line no-lone-blocks
               {
@@ -191,7 +214,7 @@ export default function NewCompanyModal({ setOpenModal, companyDetails }) {
             id="cancelBtn"
           >
             Cancel
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
